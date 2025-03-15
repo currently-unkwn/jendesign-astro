@@ -1,0 +1,86 @@
+---
+type spaceOptions =
+  | "space-0"
+  | "space-1"
+  | "space-2"
+  | "space-3"
+  | "space-4"
+  | "space-5"
+  | "space-6"
+  | "space-7"
+  | "space-8"
+  | "space-9"
+  | "space-10"
+  | "space-11"
+  | "space-12"
+  | "space-13"
+  | "space-14"
+  | "space-15"
+  | "space-16"
+  | "space-17"
+  | "space-18"
+  | "space-19";
+
+type justifyOptions = "start" | "end" | "center" | "stretch";
+
+type Props = {
+  space?: spaceOptions;
+  class?: string;
+  minItemWidth?: string;
+  maxColumns?: string;
+  justifyItems?: justifyOptions;
+  [key: string]: any;
+};
+const {
+  space = "space-4",
+  class: classList,
+  minItemWidth = "250px",
+  maxColumns,
+  justifyItems,
+  ...rest
+} = Astro.props;
+
+const gap = `var(--${space}-fixed)`;
+---
+
+<div
+  class:list={[
+    "auto-grid",
+    classList,
+    { ["justify-items-" + justifyItems]: justifyItems },
+  ]}
+  {...rest}
+>
+  <slot />
+</div>
+
+<style define:vars={{ minItemWidth, gap, maxColumns }}>
+  /* 
+* AutoGrid by this example 
+* https://9elements.com/blog/building-a-rock-solid-auto-grid/?utm_source=convertkit&utm_medium=email&utm_campaign=Examining%20light-dark(),%20Debating%20masonry%20%7C%20ModernCSS%20Newsletter%20#75%20-%2013890373
+*/
+
+  .auto-grid {
+    --_max-column-count: calc(100% / var(--maxColumns, infinity) - var(--gap));
+
+    --_column-width: max(
+      var(--_max-column-count),
+      min(var(--minItemWidth), 100%)
+    );
+
+    display: grid;
+    gap: var(--gap);
+
+    /* justify-items: center; */
+  }
+
+  /* Auto columns if min() is supported */
+  @supports (width: min(250px, 100%)) {
+    .auto-grid {
+      grid-template-columns: repeat(
+        auto-fit,
+        minmax(var(--_column-width), 1fr)
+      );
+    }
+  }
+</style>

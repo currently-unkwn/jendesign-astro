@@ -1,0 +1,356 @@
+/*
+* GAP 
+*/
+
+@import "./breakpoints.css";
+
+/* Gap */
+.gap-space-0,
+.default\:gap-space-0 {
+  gap: var(--space-0-fixed);
+}
+
+.gap-space-1,
+.default\:gap-space-1 {
+  gap: var(--space-1-fixed);
+}
+
+.gap-space-2,
+.default\:gap-space-2 {
+  gap: var(--space-2-fixed);
+}
+
+.gap-space-3,
+.default\:gap-space-3 {
+  gap: var(--space-3-fixed);
+}
+
+.gap-space-4,
+.default\:gap-space-4 {
+  gap: var(--space-4-fixed);
+}
+
+.gap-space-5,
+.default\:gap-space-5 {
+  gap: var(--space-5-fixed);
+}
+
+.gap-space-6,
+.default\:gap-space-6 {
+  gap: var(--space-6-fixed);
+}
+
+.gap-space-7,
+.default\:gap-space-7 {
+  gap: var(--space-7-fixed);
+}
+
+.gap-space-8,
+.default\:gap-space-8 {
+  gap: var(--space-8-fixed);
+}
+
+.gap-space-9,
+.default\:gap-space-9 {
+  gap: var(--space-9-fixed);
+}
+
+.gap-space-10,
+.default\:gap-space-10 {
+  gap: var(--space-10-fixed);
+}
+
+.gap-space-11,
+.default\:gap-space-11 {
+  gap: var(--space-11-fixed);
+}
+
+.gap-space-12,
+.default\:gap-space-12 {
+  gap: var(--space-12-fixed);
+}
+
+.gap-space-13,
+.default\:gap-space-13 {
+  gap: var(--space-13-fixed);
+}
+
+.gap-space-14,
+.default\:gap-space-14 {
+  gap: var(--space-14-fixed);
+}
+
+.gap-space-15,
+.default\:gap-space-15 {
+  gap: var(--space-15-fixed);
+}
+
+.gap-space-16,
+.default\:gap-space-16 {
+  gap: var(--space-16-fixed);
+}
+
+.gap-space-17,
+.default\:gap-space-17 {
+  gap: var(--space-17-fixed);
+}
+
+.gap-space-18,
+.default\:gap-space-18 {
+  gap: var(--space-18-fixed);
+}
+
+.gap-space-19,
+.default\:gap-space-19 {
+  gap: var(--space-19-fixed);
+}
+
+/* Breakpoints */
+
+@media (--tablet-and-up) {
+  /* Gap */
+
+  .tablet\:gap-space-0 {
+    gap: var(--space-0-fixed);
+  }
+
+  .tablet\:gap-space-1 {
+    gap: var(--space-1-fixed);
+  }
+
+  .tablet\:gap-space-2 {
+    gap: var(--space-2-fixed);
+  }
+
+  .tablet\:gap-space-3 {
+    gap: var(--space-3-fixed);
+  }
+
+  .tablet\:gap-space-4 {
+    gap: var(--space-4-fixed);
+  }
+
+  .tablet\:gap-space-5 {
+    gap: var(--space-5-fixed);
+  }
+
+  .tablet\:gap-space-6 {
+    gap: var(--space-6-fixed);
+  }
+
+  .tablet\:gap-space-7 {
+    gap: var(--space-7-fixed);
+  }
+
+  .tablet\:gap-space-8 {
+    gap: var(--space-8-fixed);
+  }
+
+  .tablet\:gap-space-9 {
+    gap: var(--space-9-fixed);
+  }
+
+  .tablet\:gap-space-10 {
+    gap: var(--space-10-fixed);
+  }
+
+  .tablet\:gap-space-11 {
+    gap: var(--space-11-fixed);
+  }
+
+  .tablet\:gap-space-12 {
+    gap: var(--space-12-fixed);
+  }
+
+  .tablet\:gap-space-13 {
+    gap: var(--space-13-fixed);
+  }
+
+  .tablet\:gap-space-14 {
+    gap: var(--space-14-fixed);
+  }
+
+  .tablet\:gap-space-15 {
+    gap: var(--space-15-fixed);
+  }
+
+  .tablet\:gap-space-16 {
+    gap: var(--space-16-fixed);
+  }
+
+  .tablet\:gap-space-17 {
+    gap: var(--space-17-fixed);
+  }
+
+  .tablet\:gap-space-18 {
+    gap: var(--space-18-fixed);
+  }
+
+  .tablet\:gap-space-19 {
+    gap: var(--space-19-fixed);
+  }
+}
+
+@media (--laptop-and-up) {
+  .laptop\:gap-space-0 {
+    gap: var(--space-0-fixed);
+  }
+
+  .laptop\:gap-space-1 {
+    gap: var(--space-1-fixed);
+  }
+
+  .laptop\:gap-space-2 {
+    gap: var(--space-2-fixed);
+  }
+
+  .laptop\:gap-space-3 {
+    gap: var(--space-3-fixed);
+  }
+
+  .laptop\:gap-space-4 {
+    gap: var(--space-4-fixed);
+  }
+
+  .laptop\:gap-space-5 {
+    gap: var(--space-5-fixed);
+  }
+
+  .laptop\:gap-space-6 {
+    gap: var(--space-6-fixed);
+  }
+
+  .laptop\:gap-space-7 {
+    gap: var(--space-7-fixed);
+  }
+
+  .laptop\:gap-space-8 {
+    gap: var(--space-8-fixed);
+  }
+
+  .laptop\:gap-space-9 {
+    gap: var(--space-9-fixed);
+  }
+
+  .laptop\:gap-space-10 {
+    gap: var(--space-10-fixed);
+  }
+
+  .laptop\:gap-space-11 {
+    gap: var(--space-11-fixed);
+  }
+
+  .laptop\:gap-space-12 {
+    gap: var(--space-12-fixed);
+  }
+
+  .laptop\:gap-space-13 {
+    gap: var(--space-13-fixed);
+  }
+
+  .laptop\:gap-space-14 {
+    gap: var(--space-14-fixed);
+  }
+
+  .laptop\:gap-space-15 {
+    gap: var(--space-15-fixed);
+  }
+
+  .laptop\:gap-space-16 {
+    gap: var(--space-16-fixed);
+  }
+
+  .laptop\:gap-space-17 {
+    gap: var(--space-17-fixed);
+  }
+
+  .laptop\:gap-space-18 {
+    gap: var(--space-18-fixed);
+  }
+
+  .laptop\:gap-space-19 {
+    gap: var(--space-19-fixed);
+  }
+}
+
+@media (--desktop-and-up) {
+  .desktop\:gap-space-0 {
+    gap: var(--space-0-fixed);
+  }
+
+  .desktop\:gap-space-1 {
+    gap: var(--space-1-fixed);
+  }
+
+  .desktop\:gap-space-2 {
+    gap: var(--space-2-fixed);
+  }
+
+  .desktop\:gap-space-3 {
+    gap: var(--space-3-fixed);
+  }
+
+  .desktop\:gap-space-4 {
+    gap: var(--space-4-fixed);
+  }
+
+  .desktop\:gap-space-5 {
+    gap: var(--space-5-fixed);
+  }
+
+  .desktop\:gap-space-6 {
+    gap: var(--space-6-fixed);
+  }
+
+  .desktop\:gap-space-7 {
+    gap: var(--space-7-fixed);
+  }
+
+  .desktop\:gap-space-8 {
+    gap: var(--space-8-fixed);
+  }
+
+  .desktop\:gap-space-9 {
+    gap: var(--space-9-fixed);
+  }
+
+  .desktop\:gap-space-10 {
+    gap: var(--space-10-fixed);
+  }
+
+  .desktop\:gap-space-11 {
+    gap: var(--space-11-fixed);
+  }
+
+  .desktop\:gap-space-12 {
+    gap: var(--space-12-fixed);
+  }
+
+  .desktop\:gap-space-13 {
+    gap: var(--space-13-fixed);
+  }
+
+  .desktop\:gap-space-14 {
+    gap: var(--space-14-fixed);
+  }
+
+  .desktop\:gap-space-15 {
+    gap: var(--space-15-fixed);
+  }
+
+  .desktop\:gap-space-16 {
+    gap: var(--space-16-fixed);
+  }
+
+  .desktop\:gap-space-17 {
+    gap: var(--space-17-fixed);
+  }
+
+  .desktop\:gap-space-18 {
+    gap: var(--space-18-fixed);
+  }
+
+  .desktop\:gap-space-19 {
+    gap: var(--space-19-fixed);
+  }
+}

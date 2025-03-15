@@ -1,0 +1,28 @@
+/*
+* COLORS
+*/
+@import "../04-utilities/breakpoints.css";
+
+:root {
+  /* Brand colors */
+  --color-primary: hsl(0 19% 75%);
+  --color-primary-lightest: hsl(0 54% 97%);
+
+  --color-secondary: hsl(0 19% 53%);
+  --color-secondary-darker: hsl(0 33% 20%);
+  --color-secondary-darkest: hsl(0 33% 11%);
+
+  --color-tertiary: hsl(300 13% 43%);
+
+  /* Neutral colors */
+  --color-black: hsl(200, 11%, 5%);
+  --color-white: hsl(255 100% 100%);
+
+  --color-dark-gray: hsl(0 2% 11%);
+  --color-gray: hsl(40 2% 66%);
+  --color-gray-light: hsl(55 14% 83%);
+  --color-gray-light-02: hsl(80 18% 97%);
+
+  --color-text: hsl(36 100% 96%);
+  --color-text-darker: hsl(36 95% 83%);
+}

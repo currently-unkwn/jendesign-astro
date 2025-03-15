@@ -1,0 +1,104 @@
+---
+// Compositions
+
+// Components
+import GetInTouch from "./GetInTouch.astro";
+import Copyright from "./Copyright.astro";
+
+// Data
+import { CONTACTS_DATA } from "@/data/siteData";
+import Stack from "./compositions/Stack.astro";
+
+const [email, phone, instagram, telegram] = CONTACTS_DATA;
+---
+
+<footer class="footer">
+  <div class="filler"></div>
+
+  <GetInTouch />
+
+  <div class="info">
+    <div class="filler">
+      <Copyright />
+    </div>
+
+    <div class="contacts">
+      <Stack space="space-0">
+        <a href={phone.link}>{phone.value}</a>
+        <a href={email.link}>{email.value}</a>
+      </Stack>
+    </div>
+
+    <div class="social">
+      <Stack space="space-0">
+        <a href={telegram.link}>{telegram.title}</a>
+        <a href={instagram.link}>{instagram.title}</a>
+      </Stack>
+    </div>
+  </div>
+</footer>
+
+<style>
+  @import "@styles/04-utilities/breakpoints.css";
+
+  .footer {
+    --_height: 55vh;
+
+    display: flex;
+    flex-direction: column;
+    height: var(--_height);
+
+    /* TEMP */
+    background-color: var(--color-tertiary);
+
+    @media (--tablet-and-up) {
+      --_height: 70vh;
+    }
+
+    @media (--laptop-and-up) {
+      --_height: 100vh;
+    }
+  }
+
+  .filler {
+    @media (--tablet-and-up) {
+      flex: 1;
+    }
+  }
+
+  .info {
+    margin-block-start: auto;
+    display: flex;
+    justify-content: center;
+    padding: var(--space-4-fixed) var(--space-7-fixed);
+
+    @media (--tablet-and-up) {
+      align-items: flex-end;
+      justify-content: revert;
+      flex: 1;
+      margin-top: 0;
+    }
+  }
+
+  .contacts {
+    display: none;
+    text-align: center;
+
+    @media (--tablet-and-up) {
+      display: revert;
+    }
+  }
+
+  .social {
+    display: none;
+    text-align: center;
+
+    @media (--tablet-and-up) {
+      flex: 1;
+
+      display: flex;
+
+      justify-content: flex-end;
+    }
+  }
+</style>

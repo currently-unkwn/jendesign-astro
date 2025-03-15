@@ -1,0 +1,55 @@
+---
+// Compositions
+
+// Components
+import Button from "./Button.astro";
+
+// Types
+interface Props {
+  class?: string;
+  name: string;
+}
+
+const { class: classList, name } = Astro.props;
+---
+
+<dialog class:list={[classList]} data-dialog={name}>
+  <div class="content">
+    <slot />
+  </div>
+
+  <Button data-close-dialog aria-label="Close menu">
+    <span>Close menu</span>
+  </Button>
+</dialog>
+
+<style>
+  @import "@styles/04-utilities/breakpoints.css";
+
+  dialog {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    background: transparent;
+    width: 100%;
+  }
+
+  dialog .content {
+    --_bg-color: var(--color-primary-lightest);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    background-color: var(--_bg-color);
+
+    @media (--laptop-and-up) {
+      height: var(--header-height);
+      --_bg-color: var(--color-white);
+    }
+  }
+</style>

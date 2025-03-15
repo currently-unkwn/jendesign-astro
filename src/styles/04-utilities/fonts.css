@@ -1,0 +1,23 @@
+/*
+* Fonts 
+*/
+
+.font-text {
+  font-family: var(--font-text);
+}
+
+.font-heading {
+  font-family: var(--font-heading);
+}
+
+.font-medium {
+  font-weight: var(--font-medium);
+}
+
+.font-semibold {
+  font-weight: var(--font-semibold);
+}
+
+.font-bold {
+  font-weight: var(--font-bold);
+}

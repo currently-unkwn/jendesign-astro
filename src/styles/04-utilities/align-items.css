@@ -1,0 +1,32 @@
+/*
+* ALIGN ITEMS 
+*/
+
+@import "./breakpoints.css";
+
+.items-start {
+  align-items: flex-start;
+}
+.items-end {
+  align-items: flex-end;
+}
+.items-center {
+  align-items: center;
+}
+.items-baseline {
+  align-items: baseline;
+}
+.items-stretch {
+  align-items: stretch;
+}
+
+/* Breakpoints */
+
+@media (--tablet-and-up) {
+}
+
+@media (--laptop-and-up) {
+}
+
+@media (--desktop-and-up) {
+}

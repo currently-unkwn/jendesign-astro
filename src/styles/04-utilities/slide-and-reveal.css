@@ -1,0 +1,19 @@
+/*
+* Slide and Reveal Animations Library 
+*/
+
+/*
+* Fade Down
+*/
+
+[data-fade-down] {
+  opacity: 0;
+  transform: translate3d(0, -2rem, 0) scale(0.9);
+
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+[data-fade-down="visible"] {
+  opacity: 1;
+  transform: translate3d(0, 0, 0) scale(1);
+}

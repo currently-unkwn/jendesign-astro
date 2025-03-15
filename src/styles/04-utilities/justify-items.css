@@ -1,0 +1,29 @@
+/*
+* ALIGN ITEMS 
+*/
+
+@import "./breakpoints.css";
+
+.justify-items-start {
+  justify-items: start;
+}
+.justify-items-end {
+  justify-items: end;
+}
+.justify-items-center {
+  justify-items: center;
+}
+.justify-items-stretch {
+  justify-items: stretch;
+}
+
+/* Breakpoints */
+
+@media (--tablet-and-up) {
+}
+
+@media (--laptop-and-up) {
+}
+
+@media (--desktop-and-up) {
+}

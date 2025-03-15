@@ -1,0 +1,45 @@
+/*
+* GENERIC
+*/
+@import "@styles/01-generic/reset.css";
+@import "@styles/01-generic/global.css";
+@import "@styles/01-generic/font-face.css";
+
+/*
+* SETTINGS
+*/
+@import "@styles/02-settings/typography.css";
+@import "@styles/02-settings/spacing.css";
+@import "@styles/02-settings/colors.css";
+@import "@styles/02-settings/animations.css";
+@import "@styles/02-settings/shadows.css";
+@import "@styles/02-settings/border-radius.css";
+@import "@styles/02-settings/containers.css";
+
+/*
+* COMPONENTS
+*/
+@import "@styles/03-components/badge.css";
+@import "@styles/03-components/buttons.css";
+@import "@styles/03-components/swiper.css";
+@import "@styles/03-components/aside-modal.css";
+@import "@styles/03-components/dialog.css";
+
+/*
+* UTILITIES
+*/
+@import "@styles/04-utilities/align-items.css";
+@import "@styles/04-utilities/breakpoints.css";
+@import "@styles/04-utilities/gap.css";
+@import "@styles/04-utilities/column-gap.css";
+@import "@styles/04-utilities/grid.css";
+@import "@styles/04-utilities/height.css";
+@import "@styles/04-utilities/justify-content.css";
+@import "@styles/04-utilities/justify-items.css";
+@import "@styles/04-utilities/padding.css";
+@import "@styles/04-utilities/row-gap.css";
+@import "@styles/04-utilities/text.css";
+@import "@styles/04-utilities/visually-hidden.css";
+@import "@styles/04-utilities/slide-and-reveal.css";
+@import "@styles/04-utilities/fonts.css";
+@import "@styles/04-utilities/colors.css";

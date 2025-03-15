@@ -1,0 +1,115 @@
+---
+type spaceOptions =
+  | "space-0"
+  | "space-1"
+  | "space-2"
+  | "space-3"
+  | "space-4"
+  | "space-5"
+  | "space-6"
+  | "space-7";
+
+type Props = {
+  space: spaceOptions;
+  minHeight?: string;
+  class?: string;
+  noPadding?: boolean;
+  [key: string]: any;
+};
+
+const {
+  space,
+  minHeight = "100%",
+  class: classList,
+  noPadding = true,
+  ...rest
+} = Astro.props;
+---
+
+<div
+  class:list={[
+    "cover",
+    classList,
+    { ["mbl-" + space]: space },
+    { "with-padding": noPadding },
+  ]}
+  {...rest}
+>
+  <slot />
+</div>
+
+<style is:global define:vars={{ minHeight }}>
+  .cover {
+    display: flex;
+    flex-direction: column;
+    /* ↓ Set a minimum height to match the viewport height
+(any minimum would be fine) */
+    min-block-size: var(--minHeight, 100%);
+  }
+
+  /* Spacing */
+
+  .cover.mbl-space-0 > * {
+    /* ↓ Give each child a top and bottom margin */
+    margin-block: var(--space-0-fixed);
+  }
+
+  .cover.mbl-space-1 > * {
+    margin-block: var(--space-1-fixed);
+  }
+
+  .cover.mbl-space-2 > * {
+    margin-block: var(--space-2-fixed);
+  }
+
+  .cover.mbl-space-3 > * {
+    margin-block: var(--space-3-fixed);
+  }
+
+  .cover.mbl-space-4 > * {
+    margin-block: var(--space-4-fixed);
+  }
+
+  /* Spacing with padding */
+
+  .cover.with-padding.mbl-space-0 {
+    /* Set a padding value */
+    padding: var(--space-0-fixed);
+  }
+
+  .cover.with-padding.mbl-space-1 {
+    padding: var(--space-1-fixed);
+  }
+
+  .cover.with-padding.mbl-space-2 {
+    padding: var(--space-2-fixed);
+  }
+
+  .cover.with-padding.mbl-space-3 {
+    padding: var(--space-3-fixed);
+  }
+
+  .cover.with-padding.mbl-space-4 {
+    padding: var(--space-4-fixed);
+  }
+
+  /* Overwrite spacing seetings */
+
+  .cover > .cover-centered {
+    /* ↓ Center the centered element
+in the available vertical space */
+    margin-block: auto;
+  }
+
+  .cover > :first-child:not(.cover-centered) {
+    /* ↓ Remove the top margin from the first-child
+if it _doesn't_ match the centered element */
+    margin-block-start: 0;
+  }
+
+  .cover > :last-child:not(.cover-centered) {
+    /* ↓ Remove the bottom margin from the last-child
+if it _doesn't_ match the centered element */
+    margin-block-end: 0;
+  }
+</style>

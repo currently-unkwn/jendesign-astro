@@ -1,0 +1,142 @@
+---
+type colorOptions =
+  | "primary"
+  | "secondary"
+  | "accent"
+  | "white"
+  | "black"
+  | "gray-200";
+
+type spaceOptions =
+  | "space-0"
+  | "space-1"
+  | "space-2"
+  | "space-3"
+  | "space-4"
+  | "space-5"
+  | "space-6"
+  | "space-7";
+
+type Props = {
+  space?: spaceOptions;
+  class?: string;
+  thumbColor: colorOptions;
+  trackColor: colorOptions;
+  isScrollSnapped?: boolean;
+  scrollSnapAlign?: "start" | "center" | "end";
+  [key: string]: any;
+};
+
+const {
+  space = "space-4",
+  class: classList,
+  thumbColor,
+  trackColor,
+  isScrollSnapped = false,
+  scrollSnapAlign,
+  ...rest
+} = Astro.props;
+
+const thumb = `var(--color-${thumbColor})`;
+const track = `var(--color-${trackColor})`;
+---
+
+<div
+  class:list={[
+    "reel",
+    classList,
+    { ["gap-" + space]: space },
+    { ["scroll-snap"]: isScrollSnapped },
+  ]}
+  {...rest}
+>
+  <slot />
+</div>
+
+<style define:vars={{ thumb, track, scrollSnapAlign }}>
+  @import "@styles/04-utilities/breakpoints.css";
+
+  .reel {
+    display: flex;
+
+    /* We want horizontal scrolling */
+    overflow-x: scroll;
+    overflow-y: hidden;
+
+    /** Space to move scrollbar away */
+    padding-block-end: var(--space-7-fixed);
+
+    @media (--tablet-and-up) {
+      scrollbar-color: var(--thumb) var(--track);
+      scrollbar-width: thin;
+      -webkit-overflow-scrolling: touch;
+    }
+  }
+
+  .reel::-webkit-scrollbar {
+    @media (--tablet-and-up) {
+      block-size: 1rem;
+    }
+  }
+
+  .reel::-webkit-scrollbar-track {
+    @media (--tablet-and-up) {
+      background-color: var(--track);
+    }
+  }
+
+  .reel::-webkit-scrollbar-thumb {
+    @media (--tablet-and-up) {
+      border: 2px solid var(--track);
+      border-radius: 1000px;
+      background-color: var(--track);
+      background-image: linear-gradient(
+        var(--track) 0,
+        var(--track) 0.25rem,
+        var(--thumb) 0.25rem,
+        var(--thumb) 0.75rem,
+        var(--track) 0.75rem
+      );
+    }
+  }
+
+  /* .reel > :global(*) {
+    height: 64px;
+    flex: 0 0 300px;
+  } */
+
+  .reel.scroll-snap {
+    scroll-snap-type: x mandatory;
+  }
+
+  .reel.scroll-snap > :global(.reel-item) {
+    scroll-snap-align: var(--scrollSnapAlign);
+  }
+</style>
+
+<script>
+  const reels = [...document.querySelectorAll(".reel")];
+
+  /**
+   * Check whether the total width of the element’s content (scrollWidth) is greater than the width of the element that is visible (clientWidth)
+   * @param {HTMLElement} element to toggle class on
+   */
+  function toggleOverflowClass(element: HTMLElement) {
+    element.classList.toggle(
+      "overflowing",
+      element.scrollWidth > element.clientWidth
+    );
+  }
+
+  reels.forEach((reel) => {
+    if ("ResizeObserver" in window) {
+      new ResizeObserver((entries) => {
+        const element = entries[0].target as HTMLElement;
+
+        toggleOverflowClass(element);
+      }).observe(reel);
+    }
+  });
+
+  console.log(reels);
+</script>

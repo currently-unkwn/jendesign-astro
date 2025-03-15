@@ -1,0 +1,74 @@
+---
+import { getBreakpoints } from "@/lib/helpers";
+
+type spaceOptions =
+  | "space-0"
+  | "space-1"
+  | "space-2"
+  | "space-3"
+  | "space-4"
+  | "space-5"
+  | "space-6"
+  | "space-7"
+  | "space-8"
+  | "space-9"
+  | "space-10"
+  | "space-11"
+  | "space-12"
+  | "space-13";
+
+interface SpaceObject {
+  default?: string;
+  smallTablet?: string;
+  tablet?: string;
+  laptop?: string;
+  desktop?: string;
+}
+
+type Props = {
+  space?: SpaceObject | spaceOptions;
+  maxWidth?: string;
+  class?: string;
+  andText?: boolean;
+  intrinsic?: boolean;
+  [key: string]: any;
+};
+
+const {
+  space = "space-0",
+  maxWidth,
+  class: classList,
+  andText = false,
+  intrinsic = false,
+  ...rest
+} = Astro.props;
+
+const responsiveSpace = getBreakpoints("pi", space);
+---
+
+<div
+  class:list={[
+    "center",
+    classList,
+    { "text-center": andText },
+    { intrinsic: intrinsic },
+    responsiveSpace,
+  ]}
+  {...rest}
+>
+  <slot />
+</div>
+
+<style define:vars={{ maxWidth }}>
+  .center {
+    box-sizing: content-box;
+    max-inline-size: var(--maxWidth, 100%);
+    margin-inline: auto;
+  }
+
+  .center.intrinsic {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+</style>

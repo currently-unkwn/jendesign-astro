@@ -1,0 +1,28 @@
+---
+// Tools
+
+// Compositions
+import Stack from "./compositions/Stack.astro";
+
+// Data
+import { navData } from "@/data/siteData";
+import Link from "./ui/Link.astro";
+---
+
+<nav class="site-nav mobile-nav">
+  <ul role="list">
+    {
+      navData.map((navItem) => {
+        return (
+          <li>
+            <Link href={navItem.href} class="mobile-nav-link">
+              {navItem.title}
+            </Link>
+          </li>
+        );
+      })
+    }
+  </ul>
+</nav>
+
+<style></style>

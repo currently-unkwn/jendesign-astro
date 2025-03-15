@@ -1,0 +1,31 @@
+---
+// Styles
+import "@styles/main.css";
+
+// Components
+import Head from "@/components/Head.astro";
+import Footer from "@/components/Footer.astro";
+import Header from "@/components/Header.astro";
+import MobileMenuDialog from "@/components/ui/MobileMenuDialog.astro";
+import MobileMenu from "@/components/MobileMenu.astro";
+---
+
+<html lang="en">
+  <Head {...Astro.props} />
+
+  <body>
+    <div id="root">
+      <Header />
+      <main>
+        <slot />
+      </main>
+      <Footer />
+    </div>
+
+    <MobileMenuDialog name="mobile-menu">
+      <MobileMenu />
+    </MobileMenuDialog>
+
+    <script src="../scripts/global.js"></script>
+  </body>
+</html>

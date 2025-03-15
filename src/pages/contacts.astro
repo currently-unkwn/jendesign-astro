@@ -1,0 +1,9 @@
+---
+import { BASE_DATA } from "@/data/siteData";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+console.log(BASE_DATA);
+---
+
+<BaseLayout seo={{ title: `Контакти | ${BASE_DATA.title}` }}>
+  <h1>Contacts</h1>
+</BaseLayout>

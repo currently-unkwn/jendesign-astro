@@ -1,0 +1,60 @@
+---
+type ratioOptions =
+  | "1:1"
+  | "2:3"
+  | "3:2"
+  | "4:5"
+  | "5:4"
+  | "4:3"
+  | "3:4"
+  | "16:10"
+  | "10:16"
+  | "16:9"
+  | "9:16";
+
+type Props = {
+  ratio: ratioOptions | string;
+  class?: string;
+  [key: string]: any;
+};
+const { class: classList, ratio, ...rest } = Astro.props;
+
+//  Get left and right aspect ratio values
+const [left, right] = ratio.split(":");
+---
+
+<div class:list={["frame", classList]} {...rest}>
+  <slot />
+</div>
+
+<style is:global define:vars={{ left, right }}>
+  .frame {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    aspect-ratio: var(--left) / var(--right);
+
+    overflow: hidden;
+  }
+
+  .frame > img,
+  .frame > picture,
+  .frame > picture > img,
+  .frame > video {
+    inline-size: 100%;
+    block-size: 100%;
+    object-fit: cover;
+  }
+
+  .frame > iframe {
+    inline-size: 100%;
+    block-size: 100%;
+  }
+
+  /* Control aspect ratio in different orientation */
+  /* @media (orientation: portrait) {
+    .frame {
+      aspect-ratio: 1 / 1;
+    }
+  } */
+</style>

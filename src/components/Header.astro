@@ -1,0 +1,36 @@
+---
+// Tools
+import { Icon } from "astro-icon/components";
+
+// Compositions
+import Center from "./compositions/Center.astro";
+import Cluster from "./compositions/Cluster.astro";
+
+// Components
+import HamburgerButton from "./HamburgerButton.astro";
+import Logo from "./Logo.astro";
+---
+
+<header class="header">
+  <Center maxWidth="83.5rem" space="space-7">
+    <Cluster alignItems="center" justify="between" class="container">
+      <Logo name="main-logo" color="text" />
+      <HamburgerButton />
+    </Cluster>
+  </Center>
+</header>
+
+<style>
+  .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    z-index: 9999;
+  }
+
+  .container {
+    height: var(--header-height);
+  }
+</style>

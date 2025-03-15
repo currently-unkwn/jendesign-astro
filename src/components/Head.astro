@@ -1,0 +1,27 @@
+---
+// Tools
+import { SEO, type Props as SEOProps } from "astro-seo";
+
+// Data
+import { BASE_DATA } from "@/data/siteData";
+
+// Types
+interface Props {
+  seo?: SEOProps;
+}
+
+// Props
+const { seo } = Astro.props;
+---
+
+<head>
+  <meta charset="utf-8" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta name="viewport" content="width=device-width" />
+  <meta name="generator" content={Astro.generator} />
+  <SEO
+    title={seo?.title ?? BASE_DATA.title}
+    description={seo?.description ?? BASE_DATA.description}
+    {...seo}
+  />
+</head>

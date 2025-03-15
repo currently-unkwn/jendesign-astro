@@ -1,0 +1,51 @@
+---
+import { getBreakpoints } from "@/lib/helpers";
+
+// import { type HTMLAttributes } from "astro/types";
+
+type tagOptions = "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
+
+interface sizeObject {
+  default?: string;
+  tablet?: string;
+  laptop?: string;
+  desktop?: string;
+}
+
+interface Props {
+  tagName: tagOptions;
+  size: sizeObject | tagOptions;
+  isBolded?: boolean;
+  class?: string;
+  rest?: any;
+}
+
+const {
+  tagName,
+  size,
+  class: classList,
+  isBolded = false,
+  ...rest
+} = Astro.props;
+
+// Assigning tagName to a capital Tag (so Astro knows it's a component)
+const Tag = tagName;
+
+const responsiveSize = getBreakpoints("size", size);
+---
+
+<Tag
+  class:list={["heading", responsiveSize, { "font-bold": isBolded }, classList]}
+  {...rest}
+>
+  <slot />
+</Tag>
+
+<style>
+  .heading {
+    letter-spacing: -1px;
+  }
+  .heading.font-heading {
+    letter-spacing: -1.5px;
+  }
+</style>

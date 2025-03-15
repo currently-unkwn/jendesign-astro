@@ -1,0 +1,95 @@
+---
+import { getBreakpoints } from "@/lib/helpers";
+
+type columnGapOptions =
+  | "space-0"
+  | "space-1"
+  | "space-2"
+  | "space-3"
+  | "space-4"
+  | "space-5"
+  | "space-6"
+  | "space-7"
+  | "space-8"
+  | "space-9"
+  | "space-10"
+  | "space-11"
+  | "space-12"
+  | "space-13"
+  | "space-14"
+  | "space-15"
+  | "space-16"
+  | "space-17"
+  | "space-18"
+  | "space-19";
+
+type rowGapOptions =
+  | "space-0"
+  | "space-1"
+  | "space-2"
+  | "space-3"
+  | "space-4"
+  | "space-5"
+  | "space-6"
+  | "space-7"
+  | "space-8"
+  | "space-9"
+  | "space-10"
+  | "space-11"
+  | "space-12"
+  | "space-13"
+  | "space-14"
+  | "space-15"
+  | "space-16"
+  | "space-17"
+  | "space-18"
+  | "space-19";
+
+interface breakpointsObject {
+  default?: string;
+  tablet?: string;
+  laptop?: string;
+  desktop?: string;
+}
+
+type alignOptions = "start" | "end" | "center" | "baseline" | "stretch";
+
+interface Props {
+  columnGap?: breakpointsObject | columnGapOptions;
+  rowGap?: breakpointsObject | rowGapOptions;
+  alignItems?: alignOptions;
+  class?: string;
+  [key: string]: any;
+}
+const {
+  columnGap = "space-4",
+  rowGap,
+  class: classList,
+  alignItems = "start",
+  ...rest
+} = Astro.props;
+
+const responsiveColumnGap = getBreakpoints("column-gap", columnGap);
+const responsiveRowGap = getBreakpoints("row-gap", rowGap);
+---
+
+<div
+  class:list={[
+    "row",
+    classList,
+    responsiveColumnGap,
+    responsiveRowGap,
+    { ["items-" + alignItems]: alignItems },
+  ]}
+  {...rest}
+>
+  <slot />
+</div>
+
+<style>
+  .row {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: 1fr auto;
+  }
+</style>

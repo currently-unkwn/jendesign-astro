@@ -1,0 +1,449 @@
+---
+import { getBreakpoints } from "@/lib/helpers";
+
+type spaceOptions =
+  | "space-0"
+  | "space-1"
+  | "space-2"
+  | "space-3"
+  | "space-4"
+  | "space-5"
+  | "space-6"
+  | "space-7"
+  | "space-8"
+  | "space-9"
+  | "space-10"
+  | "space-11"
+  | "space-12"
+  | "space-13"
+  | "space-14"
+  | "space-15"
+  | "space-16"
+  | "space-17"
+  | "space-18"
+  | "space-19";
+
+interface SpaceObject {
+  default?: string;
+  tablet?: string;
+  laptop?: string;
+  desktop?: string;
+}
+
+interface Props {
+  tagName?: "section" | "div" | "ul" | "ol";
+  space: SpaceObject | spaceOptions;
+  isRecursive?: boolean;
+  isOnlyChild?: boolean;
+  [key: string]: any;
+}
+
+const {
+  tagName = "div",
+  space,
+  isRecursive,
+  isOnlyChild = false,
+  class: classList,
+  ...rest
+} = Astro.props as Props;
+
+const Tag = tagName;
+
+const responsiveSpace = getBreakpoints("mbs", space);
+---
+
+<Tag
+  class:list={[
+    "stack",
+    classList,
+    responsiveSpace,
+    { recursive: isRecursive },
+    { ["only-child"]: isOnlyChild },
+  ]}
+  {...rest}
+>
+  <slot />
+</Tag>
+
+<style is:global>
+  @import "@styles/04-utilities/breakpoints.css";
+
+  .stack {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+
+  .only-child:only-child {
+    height: 100%;
+  }
+
+  .stack > * {
+    margin-block: 0;
+  }
+
+  /* Space */
+
+  .stack.mbs-space-0 > * + *,
+  .stack.default\:mbs-space-0 > * + *,
+  .stack.recursive.mbs-space-0 * + * {
+    margin-block-start: var(--space-0-fixed);
+  }
+
+  .stack.mbs-space-1 > * + *,
+  .stack.default\:mbs-space-1 > * + *,
+  .stack.recursive.mbs-space-1 * + * {
+    margin-block-start: var(--space-1-fixed);
+  }
+
+  .stack.mbs-space-2 > * + *,
+  .stack.default\:mbs-space-2 > * + *,
+  .stack.recursive.mbs-space-2 * + * {
+    margin-block-start: var(--space-2-fixed);
+  }
+
+  .stack.mbs-space-3 > * + *,
+  .stack.default\:mbs-space-3 > * + *,
+  .stack.recursive.mbs-space-3 * + * {
+    margin-block-start: var(--space-3-fixed);
+  }
+
+  .stack.mbs-space-4 > * + *,
+  .stack.default\:mbs-space-4 > * + *,
+  .stack.recursive.mbs-space-4 * + * {
+    margin-block-start: var(--space-4-fixed);
+  }
+
+  .stack.mbs-space-5 > * + *,
+  .stack.default\:mbs-space-5 > * + *,
+  .stack.recursive.mbs-space-5 * + * {
+    margin-block-start: var(--space-5-fixed);
+  }
+
+  .stack.mbs-space-6 > * + *,
+  .stack.default\:mbs-space-6 > * + *,
+  .stack.recursive.mbs-space-6 * + * {
+    margin-block-start: var(--space-6-fixed);
+  }
+
+  .stack.mbs-space-7 > * + *,
+  .stack.default\:mbs-space-7 > * + *,
+  .stack.recursive.mbs-space-7 * + * {
+    margin-block-start: var(--space-7-fixed);
+  }
+
+  .stack.mbs-space-8 > * + *,
+  .stack.default\:mbs-space-8 > * + *,
+  .stack.recursive.mbs-space-8 * + * {
+    margin-block-start: var(--space-8-fixed);
+  }
+
+  .stack.mbs-space-9 > * + *,
+  .stack.default\:mbs-space-9 > * + *,
+  .stack.recursive.mbs-space-9 * + * {
+    margin-block-start: var(--space-9-fixed);
+  }
+
+  .stack.mbs-space-10 > * + *,
+  .stack.default\:mbs-space-10 > * + *,
+  .stack.recursive.mbs-space-10 * + * {
+    margin-block-start: var(--space-10-fixed);
+  }
+
+  .stack.mbs-space-11 > * + *,
+  .stack.default\:mbs-space-11 > * + *,
+  .stack.recursive.mbs-space-11 * + * {
+    margin-block-start: var(--space-11-fixed);
+  }
+
+  .stack.mbs-space-12 > * + *,
+  .stack.default\:mbs-space-12 > * + *,
+  .stack.recursive.mbs-space-12 * + * {
+    margin-block-start: var(--space-12-fixed);
+  }
+
+  .stack.mbs-space-13 > * + *,
+  .stack.default\:mbs-space-13 > * + *,
+  .stack.recursive.mbs-space-13 * + * {
+    margin-block-start: var(--space-13-fixed);
+  }
+
+  .stack.mbs-space-14 > * + *,
+  .stack.default\:mbs-space-14 > * + *,
+  .stack.recursive.mbs-space-14 * + * {
+    margin-block-start: var(--space-14-fixed);
+  }
+
+  .stack.mbs-space-15 > * + *,
+  .stack.default\:mbs-space-15 > * + *,
+  .stack.recursive.mbs-space-15 * + * {
+    margin-block-start: var(--space-15-fixed);
+  }
+
+  .stack.mbs-space-16 > * + *,
+  .stack.default\:mbs-space-16 > * + *,
+  .stack.recursive.mbs-space-16 * + * {
+    margin-block-start: var(--space-16-fixed);
+  }
+
+  .stack.mbs-space-17 > * + *,
+  .stack.default\:mbs-space-17 > * + *,
+  .stack.recursive.mbs-space-17 * + * {
+    margin-block-start: var(--space-17-fixed);
+  }
+
+  .stack.mbs-space-18 > * + *,
+  .stack.default\:mbs-space-18 > * + *,
+  .stack.recursive.mbs-space-18 * + * {
+    margin-block-start: var(--space-18-fixed);
+  }
+
+  .stack.mbs-space-19 > * + *,
+  .stack.default\:mbs-space-19 > * + *,
+  .stack.recursive.mbs-space-19 * + * {
+    margin-block-start: var(--space-19-fixed);
+  }
+
+  /* Breakpoints */
+
+  @media (--tablet-and-up) {
+    .stack.tablet\:mbs-space-0 > * + *,
+    .stack.recursive.tablet\:mbs-space-0 * + * {
+      margin-block-start: var(--space-0-fixed);
+    }
+
+    .stack.tablet\:mbs-space-1 > * + *,
+    .stack.recursive.tablet\:mbs-space-1 * + * {
+      margin-block-start: var(--space-1-fixed);
+    }
+
+    .stack.tablet\:mbs-space-2 > * + *,
+    .stack.recursive.tablet\:mbs-space-2 * + * {
+      margin-block-start: var(--space-2-fixed);
+    }
+
+    .stack.tablet\:mbs-space-3 > * + *,
+    .stack.recursive.tablet\:mbs-space-3 * + * {
+      margin-block-start: var(--space-3-fixed);
+    }
+
+    .stack.tablet\:mbs-space-4 > * + *,
+    .stack.recursive.tablet\:mbs-space-4 * + * {
+      margin-block-start: var(--space-4-fixed);
+    }
+
+    .stack.tablet\:mbs-space-5 > * + *,
+    .stack.recursive.tablet\:mbs-space-5 * + * {
+      margin-block-start: var(--space-5-fixed);
+    }
+
+    .stack.tablet\:mbs-space-6 > * + *,
+    .stack.recursive.tablet\:mbs-space-6 * + * {
+      margin-block-start: var(--space-6-fixed);
+    }
+
+    .stack.tablet\:mbs-space-7 > * + *,
+    .stack.recursive.tablet\:mbs-space-7 * + * {
+      margin-block-start: var(--space-7-fixed);
+    }
+
+    .stack.tablet\:mbs-space-8 > * + *,
+    .stack.recursive.tablet\:mbs-space-8 * + * {
+      margin-block-start: var(--space-8-fixed);
+    }
+
+    .stack.tablet\:mbs-space-9 > * + *,
+    .stack.recursive.tablet\:mbs-space-9 * + * {
+      margin-block-start: var(--space-9-fixed);
+    }
+
+    .stack.tablet\:mbs-space-10 > * + *,
+    .stack.recursive.tablet\:mbs-space-10 * + * {
+      margin-block-start: var(--space-10-fixed);
+    }
+
+    .stack.tablet\:mbs-space-11 > * + *,
+    .stack.recursive.tablet\:mbs-space-11 * + * {
+      margin-block-start: var(--space-11-fixed);
+    }
+
+    .stack.tablet\:mbs-space-12 > * + *,
+    .stack.recursive.tablet\:mbs-space-12 * + * {
+      margin-block-start: var(--space-12-fixed);
+    }
+
+    .stack.tablet\:mbs-space-13 > * + *,
+    .stack.recursive.tablet\:mbs-space-13 * + * {
+      margin-block-start: var(--space-13-fixed);
+    }
+
+    .stack.tablet\:mbs-space-14 > * + *,
+    .stack.recursive.tablet\:mbs-space-14 * + * {
+      margin-block-start: var(--space-14-fixed);
+    }
+
+    .stack.tablet\:mbs-space-15 > * + *,
+    .stack.recursive.tablet\:mbs-space-15 * + * {
+      margin-block-start: var(--space-15-fixed);
+    }
+  }
+
+  @media (--laptop-and-up) {
+    .stack.laptop\:mbs-space-0 > * + *,
+    .stack.recursive.laptop\:mbs-space-0 * + * {
+      margin-block-start: var(--space-0-fixed);
+    }
+
+    .stack.laptop\:mbs-space-1 > * + *,
+    .stack.recursive.laptop\:mbs-space-1 * + * {
+      margin-block-start: var(--space-1-fixed);
+    }
+
+    .stack.laptop\:mbs-space-2 > * + *,
+    .stack.recursive.laptop\:mbs-space-2 * + * {
+      margin-block-start: var(--space-2-fixed);
+    }
+
+    .stack.laptop\:mbs-space-3 > * + *,
+    .stack.recursive.laptop\:mbs-space-3 * + * {
+      margin-block-start: var(--space-3-fixed);
+    }
+
+    .stack.laptop\:mbs-space-4 > * + *,
+    .stack.recursive.laptop\:mbs-space-4 * + * {
+      margin-block-start: var(--space-4-fixed);
+    }
+
+    .stack.laptop\:mbs-space-5 > * + *,
+    .stack.recursive.laptop\:mbs-space-5 * + * {
+      margin-block-start: var(--space-5-fixed);
+    }
+
+    .stack.laptop\:mbs-space-6 > * + *,
+    .stack.recursive.laptop\:mbs-space-6 * + * {
+      margin-block-start: var(--space-6-fixed);
+    }
+
+    .stack.laptop\:mbs-space-7 > * + *,
+    .stack.recursive.laptop\:mbs-space-7 * + * {
+      margin-block-start: var(--space-7-fixed);
+    }
+
+    .stack.laptop\:mbs-space-8 > * + *,
+    .stack.recursive.laptop\:mbs-space-8 * + * {
+      margin-block-start: var(--space-8-fixed);
+    }
+
+    .stack.laptop\:mbs-space-9 > * + *,
+    .stack.recursive.laptop\:mbs-space-9 * + * {
+      margin-block-start: var(--space-9-fixed);
+    }
+
+    .stack.laptop\:mbs-space-10 > * + *,
+    .stack.recursive.laptop\:mbs-space-10 * + * {
+      margin-block-start: var(--space-10-fixed);
+    }
+
+    .stack.laptop\:mbs-space-11 > * + *,
+    .stack.recursive.laptop\:mbs-space-11 * + * {
+      margin-block-start: var(--space-11-fixed);
+    }
+
+    .stack.laptop\:mbs-space-12 > * + *,
+    .stack.recursive.laptop\:mbs-space-12 * + * {
+      margin-block-start: var(--space-12-fixed);
+    }
+
+    .stack.laptop\:mbs-space-13 > * + *,
+    .stack.recursive.laptop\:mbs-space-13 * + * {
+      margin-block-start: var(--space-13-fixed);
+    }
+
+    .stack.laptop\:mbs-space-14 > * + *,
+    .stack.recursive.laptop\:mbs-space-14 * + * {
+      margin-block-start: var(--space-14-fixed);
+    }
+
+    .stack.laptop\:mbs-space-15 > * + *,
+    .stack.recursive.laptop\:mbs-space-15 * + * {
+      margin-block-start: var(--space-15-fixed);
+    }
+  }
+
+  @media (--desktop-and-up) {
+    .stack.desktop\:mbs-space-1 > * + *,
+    .stack.recursive.desktop\:mbs-space-1 * + * {
+      margin-block-start: var(--space-1-fixed);
+    }
+
+    .stack.desktop\:mbs-space-2 > * + *,
+    .stack.recursive.desktop\:mbs-space-2 * + * {
+      margin-block-start: var(--space-2-fixed);
+    }
+
+    .stack.desktop\:mbs-space-3 > * + *,
+    .stack.recursive.desktop\:mbs-space-3 * + * {
+      margin-block-start: var(--space-3-fixed);
+    }
+
+    .stack.desktop\:mbs-space-4 > * + *,
+    .stack.recursive.desktop\:mbs-space-4 * + * {
+      margin-block-start: var(--space-4-fixed);
+    }
+
+    .stack.desktop\:mbs-space-5 > * + *,
+    .stack.recursive.desktop\:mbs-space-5 * + * {
+      margin-block-start: var(--space-5-fixed);
+    }
+
+    .stack.desktop\:mbs-space-6 > * + *,
+    .stack.recursive.desktop\:mbs-space-6 * + * {
+      margin-block-start: var(--space-6-fixed);
+    }
+
+    .stack.desktop\:mbs-space-7 > * + *,
+    .stack.recursive.desktop\:mbs-space-7 * + * {
+      margin-block-start: var(--space-7-fixed);
+    }
+
+    .stack.desktop\:mbs-space-8 > * + *,
+    .stack.recursive.desktop\:mbs-space-8 * + * {
+      margin-block-start: var(--space-8-fixed);
+    }
+
+    .stack.desktop\:mbs-space-9 > * + *,
+    .stack.recursive.desktop\:mbs-space-9 * + * {
+      margin-block-start: var(--space-9-fixed);
+    }
+
+    .stack.desktop\:mbs-space-10 > * + *,
+    .stack.recursive.desktop\:mbs-space-10 * + * {
+      margin-block-start: var(--space-10-fixed);
+    }
+
+    .stack.desktop\:mbs-space-11 > * + *,
+    .stack.recursive.desktop\:mbs-space-11 * + * {
+      margin-block-start: var(--space-11-fixed);
+    }
+
+    .stack.desktop\:mbs-space-12 > * + *,
+    .stack.recursive.desktop\:mbs-space-12 * + * {
+      margin-block-start: var(--space-12-fixed);
+    }
+
+    .stack.desktop\:mbs-space-13 > * + *,
+    .stack.recursive.desktop\:mbs-space-13 * + * {
+      margin-block-start: var(--space-13-fixed);
+    }
+
+    .stack.desktop\:mbs-space-14 > * + *,
+    .stack.recursive.desktop\:mbs-space-14 * + * {
+      margin-block-start: var(--space-14-fixed);
+    }
+
+    .stack.desktop\:mbs-space-15 > * + *,
+    .stack.recursive.desktop\:mbs-space-15 * + * {
+      margin-block-start: var(--space-15-fixed);
+    }
+  }
+</style>

@@ -1,0 +1,41 @@
+---
+import { Icon } from "astro-icon/components";
+import Link from "./ui/Link.astro";
+
+interface Props {
+  name: "main-logo" | "mobile-menu-logo" | "preloader-logo";
+  color: "primary" | "secondary" | "white" | "black" | "text";
+  class?: string;
+
+  [key: string]: any;
+}
+
+const { name, class: classList, color, ...rest } = Astro.props;
+---
+
+<Link href="/">
+  <div
+    class:list={["logo", classList, { ["color-" + color]: color }]}
+    {...rest}
+  >
+    <Icon name={name} />
+  </div>
+</Link>
+
+<style>
+  @import "@styles/04-utilities/breakpoints.css";
+
+  .logo {
+    --_width: 9.5rem;
+    width: var(--_width);
+
+    & [data-icon] {
+      height: auto;
+      width: 100%;
+    }
+
+    @media (--tablet-s-and-up) {
+      --_width: 11rem;
+    }
+  }
+</style>

@@ -1,0 +1,12 @@
+/*
+  0-550px — default (mobile)
+  550-768px — 48rem — tablet-s
+  550-1100px - 34.37rem — tablet
+  1100-1500px — 68.75rem — laptop
+ 1500px — 93.75em — desktop 
+*/
+
+@custom-media --tablet-s-and-up (width >= 34.37em);
+@custom-media --tablet-and-up (width >= 48em);
+@custom-media --laptop-and-up (width >= 68.75em);
+@custom-media --desktop-and-up (width >= 93.75em);

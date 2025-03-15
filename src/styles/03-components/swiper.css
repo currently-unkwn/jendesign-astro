@@ -1,0 +1,12 @@
+/* SWIPER GLOBALS */
+
+.swiper-pagination-progressbar-fill {
+  display: block;
+  width: 100%;
+  height: 100%;
+
+  background-color: var(--color-secondary);
+  border-radius: var(--rounded-full);
+
+  transform-origin: left top;
+}

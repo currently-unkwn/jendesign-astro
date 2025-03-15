@@ -1,0 +1,28 @@
+---
+import Heading from "./ui/Heading.astro";
+---
+
+<div class="get-in-touch">
+  <Heading tagName="h2" size="h3" class="text"> Questions? Say hi </Heading>
+</div>
+
+<style>
+  @import "@styles/04-utilities/breakpoints.css";
+
+  .get-in-touch {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+
+    padding-block-start: var(--space-12-fixed);
+
+    @media (--tablet-and-up) {
+      padding-block-start: 0;
+    }
+  }
+
+  .get-in-touch :global(.text) {
+    font-weight: var(--font-regular);
+    line-height: 1.1;
+  }
+</style>

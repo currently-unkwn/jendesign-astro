@@ -1,0 +1,29 @@
+---
+interface Props {
+  class?: string;
+}
+
+const { class: classList } = Astro.props;
+---
+
+<div class:list={["grid", classList]}>
+  <slot />
+</div>
+
+<style>
+  @import "@styles/04-utilities/breakpoints.css";
+
+  .grid {
+    --_gap: var(--space-4);
+
+    display: grid;
+    grid-template-columns:
+      [full-start] 1fr [col-start] repeat(10, minmax(0, 1fr))
+      [col-end] 1fr [full-end];
+    column-gap: var(--_gap);
+
+    @media (--tablet-s-and-up) {
+      --_gap: var(--space-7);
+    }
+  }
+</style>

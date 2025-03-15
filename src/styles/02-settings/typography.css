@@ -1,0 +1,223 @@
+/*
+* TYPOGRAPHY 
+*/
+
+@import "../04-utilities/breakpoints.css";
+
+:root {
+  --body-base-text: 1rem; /* This means 16px */
+  --body-line-height: 1.4;
+  --heading-line-height: 1.1;
+
+  /* Base font stacks */
+
+  --font-sans-serif: "Roboto", -apple-system, BlinkMacSystemFont, avenir next,
+    avenir, segoe ui, helvetica neue, helvetica, Ubuntu, roboto, noto, arial,
+    sans-serif;
+
+  --font-serif: "Butler-Free Regular", Iowan Old Style, Apple Garamond,
+    Baskerville, Times New Roman, Droid Serif, Times, Source Serif Pro, serif,
+    Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, serif;
+
+  --font-text: "Adjusted Arial Fallback", -apple-system, BlinkMacSystemFont,
+    avenir next, avenir, segoe ui, helvetica neue, helvetica, Ubuntu, roboto,
+    noto, arial, sans-serif;
+
+  --font-heading: "Ermilov Bold", "Adjusted Arial Black Fallback", Avenir,
+    Montserrat, Corbel, "URW Gothic", source-sans-pro, sans-serif;
+
+  /*
+  * Major second: 1.125
+  * Minor third: 1.2
+  * Major third: 1.25
+  * Perfect fourth: 1.33
+  */
+
+  --heading-ratio: 1.2;
+  --text-ratio: 1.125;
+
+  /* Heading typographic scale */
+
+  --heading-minus-3: calc(var(--heading-minus-2) / var(--heading-ratio));
+  --heading-minus-2: calc(var(--heading-minus-1) / var(--heading-ratio));
+  --heading-minus-1: calc(var(--heading-base) / var(--heading-ratio));
+  --heading-base: var(--body-base-text);
+  --heading-1: calc(var(--heading-base) * var(--heading-ratio));
+  --heading-2: calc(var(--heading-1) * var(--heading-ratio));
+  --heading-3: calc(var(--heading-2) * var(--heading-ratio));
+  --heading-4: calc(var(--heading-3) * var(--heading-ratio));
+  --heading-5: calc(var(--heading-4) * var(--heading-ratio));
+  --heading-6: calc(var(--heading-5) * var(--heading-ratio));
+  --heading-7: calc(var(--heading-6) * var(--heading-ratio));
+  --heading-8: calc(var(--heading-7) * var(--heading-ratio));
+  --heading-9: calc(var(--heading-8) * var(--heading-ratio));
+  --heading-10: calc(var(--heading-9) * var(--heading-ratio));
+
+  /* Text typographic scale */
+  --text-minus-3: calc(var(--text-minus-2) / var(--text-ratio));
+  --text-minus-2: calc(var(--text-minus-1) / var(--text-ratio));
+  --text-minus-1: calc(var(--text-base) / var(--text-ratio));
+  --text-base: var(--body-base-text);
+  --text-1: calc(var(--text-base) * var(--text-ratio));
+  --text-2: calc(var(--text-1) * var(--text-ratio));
+  --text-3: calc(var(--text-2) * var(--text-ratio));
+
+  /* Font weights */
+  --font-thin: 100;
+  --font-light: 300;
+  --font-regular: 400;
+  --font-medium: 500;
+  --font-semibold: 600;
+  --font-bold: 700;
+  --font-black: 900;
+
+  @media (--tablet-and-up) {
+    --body-base-text: 1.125rem; /* This means 18px */
+  }
+
+  @media (--laptop-and-up) {
+    --heading-ratio: 1.25;
+    --body-base-text: 1.25rem; /* This means 20px */
+  }
+}
+
+/* Headings */
+
+.heading {
+  line-height: var(--heading-line-height);
+  text-wrap: balance;
+}
+
+.size-h1,
+.default\:size-h1 {
+  font-size: var(--heading-7);
+}
+.size-h2,
+.default\:size-h2 {
+  font-size: var(--heading-6);
+}
+.size-h3,
+.default\:size-h3 {
+  font-size: var(--heading-5);
+}
+.size-h4,
+.default\:size-h4 {
+  font-size: var(--heading-4);
+}
+
+.size-h5,
+.default\:size-h5 {
+  font-size: var(--heading-3);
+}
+.size-h6,
+.default\:size-h6 {
+  font-size: var(--heading-2);
+}
+
+/* Text */
+
+.x-small {
+  font-size: var(--text-minus-3);
+}
+
+.small {
+  font-size: var(--text-minus-2);
+}
+
+.medium {
+  font-size: var(--text-minus-1);
+}
+
+.large {
+  font-size: var(--text-base);
+}
+
+.x-large {
+  font-size: var(--text-1);
+}
+
+.xx-large {
+  font-size: var(--text-2);
+}
+
+.xxx-large {
+  font-size: var(--text-3);
+}
+
+@media (--tablet-and-up) {
+  .tablet\:size-h1 {
+    font-size: var(--heading-7);
+  }
+
+  .tablet\:size-h2 {
+    font-size: var(--heading-6);
+  }
+
+  .tablet\:size-h3 {
+    font-size: var(--heading-5);
+  }
+
+  .tablet\:size-h4 {
+    font-size: var(--heading-4);
+  }
+
+  .tablet\:size-h5 {
+    font-size: var(--heading-3);
+  }
+
+  .tablet\:size-h6 {
+    font-size: var(--heading-2);
+  }
+}
+
+@media (--laptop-and-up) {
+  .laptop\:size-h1 {
+    font-size: var(--heading-7);
+  }
+
+  .laptop\:size-h2 {
+    font-size: var(--heading-6);
+  }
+
+  .laptop\:size-h3 {
+    font-size: var(--heading-5);
+  }
+
+  .laptop\:size-h4 {
+    font-size: var(--heading-4);
+  }
+
+  .laptop\:size-h5 {
+    font-size: var(--heading-3);
+  }
+
+  .laptop\:size-h6 {
+    font-size: var(--heading-2);
+  }
+}
+
+@media (--desktop-and-up) {
+  .desktop\:size-h1 {
+    font-size: var(--heading-7);
+  }
+
+  .desktop\:size-h2 {
+    font-size: var(--heading-6);
+  }
+
+  .desktop\:size-h3 {
+    font-size: var(--heading-5);
+  }
+
+  .desktop\:size-h4 {
+    font-size: var(--heading-4);
+  }
+
+  .desktop\:size-h5 {
+    font-size: var(--heading-3);
+  }
+
+  .desktop\:size-h6 {
+    font-size: var(--heading-2);
+  }
+}

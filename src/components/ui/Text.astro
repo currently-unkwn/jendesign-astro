@@ -1,0 +1,58 @@
+---
+type tagOptions = "p" | "span" | "div" | "label" | "li";
+
+const sizeOptions = {
+  "x-small": "x-small",
+  small: "small",
+  medium: "medium",
+  large: "large",
+  "x-large": "x-large",
+  "xx-large": "xx-large",
+  "xxx-large": "xxx-large",
+} as const;
+
+type Props = {
+  tagName: tagOptions;
+  size: keyof typeof sizeOptions;
+  class?: string;
+  isBolded?: boolean;
+  isBadge?: boolean;
+  variant?: "primary" | "secondary" | "accent" | "neutral";
+  [key: string]: any;
+};
+
+const {
+  tagName,
+  size,
+  class: classList,
+  isBolded = false,
+  isBadge,
+  variant,
+  ...rest
+} = Astro.props;
+
+// Assigning tagName to a capital Tag (so Astro knows it's a component)
+const Tag = tagName;
+---
+
+<Tag
+  {...rest}
+  class:list={[
+    "text",
+    classList,
+    sizeOptions[size],
+    { badge: isBadge },
+    { ["badge-" + variant]: variant },
+    { "font-bold": isBolded },
+  ]}
+>
+  <slot />
+</Tag>
+
+<style>
+  .text {
+    /* font-family: var(--font-text); */
+
+    /* text-wrap: balance; */
+  }
+</style>

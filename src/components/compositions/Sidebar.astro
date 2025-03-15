@@ -1,0 +1,78 @@
+---
+type spaceOptions =
+  | "space-0"
+  | "space-1"
+  | "space-2"
+  | "space-3"
+  | "space-4"
+  | "space-5"
+  | "space-6"
+  | "space-7";
+
+type Props = {
+  gap?: spaceOptions;
+  noStretch?: boolean;
+  side?: "left" | "right";
+  contentMin?: string;
+  sideWidth?: string;
+  class?: string;
+  [key: string]: any;
+};
+const {
+  space = "space-0",
+  noStretch = false,
+  side = "left",
+  contentMin = "50%",
+  sideWidth,
+  class: classList,
+  ...rest
+} = Astro.props;
+---
+
+<!-- Add role="complementary" instead of using aside -->
+<div
+  class:list={[
+    "with-sidebar",
+    { ["gap-" + space]: space },
+    { "no-stretch": noStretch },
+    classList,
+  ]}
+  data-side={side}
+  data-side-width={sideWidth ? sideWidth : undefined}
+  {...rest}
+>
+  <slot />
+</div>
+
+<style is:global define:vars={{ contentMin, sideWidth }}>
+  .with-sidebar {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .with-sidebar[data-side="left"] > :first-child,
+  .with-sidebar[data-side="right"] > :last-child {
+    flex-grow: 1;
+  }
+
+  .with-sidebar[data-side="left"][data-side-width] > :first-child,
+  .with-sidebar[data-side="right"][data-side-width] > :last-child {
+    /* ↓ The width when the sidebar _is_ a sidebar */
+    flex-basis: var(--sideWidth);
+    flex-grow: 1;
+  }
+
+  .with-sidebar[data-side="left"] > :last-child,
+  .with-sidebar[data-side="right"] > :first-child {
+    /* ↓ Grow from nothing */
+    flex-basis: 0;
+    flex-grow: 999;
+    /* ↓ Wrap when the elements are of equal width */
+    min-inline-size: var(--contentMin);
+  }
+
+  .with-sidebar.no-stretch {
+    /* No stretching if 'no-stretch' class is applied */
+    align-items: flex-start;
+  }
+</style>

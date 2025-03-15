@@ -1,0 +1,59 @@
+/*
+* SPACING
+*/
+@import "../04-utilities/breakpoints.css";
+
+:root {
+  /* Font Relative */
+  --space-unit: 1em;
+  /* x4 multiplier */
+  --space-0: calc(0 * var(--space-unit)); /* 0px */
+  --space-1: calc(0.25 * var(--space-unit)); /* 4px */
+  --space-2: calc(0.5 * var(--space-unit)); /* 8px */
+  --space-3: calc(0.75 * var(--space-unit)); /* 12px */
+  --space-4: calc(1 * var(--space-unit)); /* 16px */
+  --space-5: calc(1.25 * var(--space-unit)); /* 20px */
+  /* x8 multiplier */
+  --space-6: calc(1.5 * var(--space-unit)); /* 24px */
+  --space-7: calc(2 * var(--space-unit)); /* 32px */
+  --space-8: calc(2.5 * var(--space-unit)); /* 40px */
+  --space-9: calc(3 * var(--space-unit)); /* 48px */
+  /* x16 multiplier */
+  --space-10: calc(4 * var(--space-unit)); /* 64px */
+  --space-11: calc(5 * var(--space-unit)); /* 80px */
+  --space-12: calc(6 * var(--space-unit)); /* 96px */
+  --space-13: calc(7 * var(--space-unit)); /* 112px  */
+  --space-14: calc(8 * var(--space-unit)); /* 128px */
+  --space-15: calc(9 * var(--space-unit)); /* 144px */
+  --space-16: calc(10 * var(--space-unit)); /* 160px */
+  --space-17: calc(15 * var(--space-unit)); /* 240px */
+  --space-18: calc(20 * var(--space-unit)); /* 320px */
+  --space-19: calc(30 * var(--space-unit)); /* 480px */
+
+  /* Root font relative */
+
+  --space-unit-fixed: 1rem;
+  /* x4 multiplier */
+  --space-0-fixed: calc(0 * var(--space-unit-fixed)); /* 4px */
+  --space-1-fixed: calc(0.25 * var(--space-unit-fixed)); /* 4px */
+  --space-2-fixed: calc(0.5 * var(--space-unit-fixed)); /* 8px */
+  --space-3-fixed: calc(0.75 * var(--space-unit-fixed)); /* 12px */
+  --space-4-fixed: calc(1 * var(--space-unit-fixed)); /* 16px */
+  --space-5-fixed: calc(1.25 * var(--space-unit-fixed)); /* 20px */
+  /* x8 multiplier */
+  --space-6-fixed: calc(1.5 * var(--space-unit-fixed)); /* 24px */
+  --space-7-fixed: calc(2 * var(--space-unit-fixed)); /* 32px */
+  --space-8-fixed: calc(2.5 * var(--space-unit-fixed)); /* 40px */
+  --space-9-fixed: calc(3 * var(--space-unit-fixed)); /* 48px */
+  /* x16 multiplier */
+  --space-10-fixed: calc(4 * var(--space-unit-fixed)); /* 64px */
+  --space-11-fixed: calc(5 * var(--space-unit-fixed)); /* 80px */
+  --space-12-fixed: calc(6 * var(--space-unit-fixed)); /* 96px */
+  --space-13-fixed: calc(7 * var(--space-unit-fixed)); /* 112px  */
+  --space-14-fixed: calc(8 * var(--space-unit-fixed)); /* 128px */
+  --space-15-fixed: calc(9 * var(--space-unit-fixed)); /* 144px */
+  --space-16-fixed: calc(10 * var(--space-unit-fixed)); /* 160px */
+  --space-17-fixed: calc(15 * var(--space-unit-fixed)); /* 240px */
+  --space-18-fixed: calc(20 * var(--space-unit-fixed)); /* 320px */
+  --space-19-fixed: calc(30 * var(--space-unit-fixed)); /* 480px */
+}

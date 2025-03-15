@@ -1,0 +1,13 @@
+---
+import Text from "./ui/Text.astro";
+---
+
+<Text tagName="p" size="medium" class="copy">
+  &copy; Eugenia Kuznetsova <span>{new Date().getFullYear()}</span>
+</Text>
+
+<script>
+  const copyDate = document.querySelector(".copy span") as HTMLSpanElement;
+
+  copyDate.textContent = new Date().getFullYear().toString();
+</script>

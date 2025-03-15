@@ -1,0 +1,36 @@
+/*
+* BADGE 
+*/
+
+.badge {
+  --_bg-color: transparent;
+  --_color: initial;
+
+  width: fit-content;
+  border-radius: 9999px;
+  padding-inline: var(--space-5-fixed);
+  padding-block-start: calc(var(--space-1-fixed) + 1px);
+  padding-block-end: var(--space-1-fixed);
+
+  color: var(--_color);
+  background-color: var(--_bg-color);
+
+  border: 2px solid currentColor;
+}
+
+.badge-accent {
+  --_color: var(--color-accent);
+  /* --_bg-color: var(--color-accent); */
+}
+
+.badge-primary {
+  --_color: var(--color-primary);
+}
+
+.badge-secondary {
+  --_color: var(--color-secondary);
+}
+
+.badge-neutral {
+  --_color: var(--color-gray-400);
+}

@@ -1,0 +1,48 @@
+---
+// Tools
+
+import { getCollection, render } from "astro:content";
+import type { CollectionEntry } from "astro:content";
+
+// Layout
+import BaseLayout from "@/layouts/BaseLayout.astro";
+
+// Compositions
+
+// Components
+
+// Data
+import { BASE_DATA } from "@/data/siteData";
+
+export async function getStaticPaths() {
+  const projects = await getCollection("projects", ({ data }) => !data.isDraft);
+
+  // return object with slug and post data
+  return projects.map((project) => ({
+    params: {
+      slug: project.id,
+    },
+    props: {
+      project,
+      projects,
+    },
+  }));
+}
+
+// Types
+interface Props {
+  project: CollectionEntry<"projects">;
+  projects: CollectionEntry<"projects">[];
+}
+
+const { project, projects } = Astro.props;
+const { Content } = await render(project);
+const { title, city, square, realizationYear, cover, infoImg, planScheme } =
+  project.data;
+
+console.log(project);
+---
+
+<BaseLayout seo={{ title: `${title} | ${BASE_DATA.title}` }}>
+  <h1>{title}</h1>
+</BaseLayout>

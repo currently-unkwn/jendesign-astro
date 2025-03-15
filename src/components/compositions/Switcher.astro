@@ -1,0 +1,46 @@
+---
+type spaceOptions =
+  | "space-0"
+  | "space-1"
+  | "space-2"
+  | "space-3"
+  | "space-4"
+  | "space-5"
+  | "space-6"
+  | "space-7";
+
+type Props = {
+  gap?: spaceOptions;
+  classes?: string;
+  threshold: string;
+  [key: string]: any;
+};
+
+const { space = "space-1", classes, threshold, ...rest } = Astro.props;
+---
+
+<div class:list={["switcher", classes, { ["gap-" + space]: space }]} {...rest}>
+  <slot />
+</div>
+
+<style is:global define:vars={{ threshold }}>
+  .switcher {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .switcher > * {
+    /* ↓ Allow children to grow */
+    flex-grow: 1;
+
+    /* ↓ Switch the layout at the --threshold */
+    flex-basis: calc((var(--threshold) - 100%) * 999);
+  }
+
+  .switcher > :nth-last-child(n + 5),
+  .switcher > :nth-last-child(n + 5) ~ * {
+    /* ↓ Switch to a vertical configuration if
+there are more than 4 child elements */
+    flex-basis: 100%;
+  }
+</style>

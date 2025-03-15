@@ -1,0 +1,358 @@
+/*
+* ROW GAP 
+*/
+
+@import "./breakpoints.css";
+
+/* Row Gap */
+.row-gap-space-0,
+.default\:row-gap-space-0 {
+  row-gap: var(--space-0-fixed);
+}
+
+.row-gap-space-1,
+.default\:row-gap-space-1 {
+  row-gap: var(--space-1-fixed);
+}
+
+.row-gap-space-2,
+.default\:row-gap-space-2 {
+  row-gap: var(--space-2-fixed);
+}
+
+.row-gap-space-3,
+.default\:row-gap-space-3 {
+  row-gap: var(--space-3-fixed);
+}
+
+.row-gap-space-4,
+.default\:row-gap-space-4 {
+  row-gap: var(--space-4-fixed);
+}
+
+.row-gap-space-5,
+.default\:row-gap-space-5 {
+  row-gap: var(--space-5-fixed);
+}
+
+.row-gap-space-6,
+.default\:row-gap-space-6 {
+  row-gap: var(--space-6-fixed);
+}
+
+.row-gap-space-7,
+.default\:row-gap-space-7 {
+  row-gap: var(--space-7-fixed);
+}
+
+.row-gap-space-8,
+.default\:row-gap-space-8 {
+  row-gap: var(--space-8-fixed);
+}
+
+.row-gap-space-9,
+.default\:row-gap-space-9 {
+  row-gap: var(--space-9-fixed);
+}
+
+.row-gap-space-10,
+.default\:row-gap-space-10 {
+  row-gap: var(--space-10-fixed);
+}
+
+.row-gap-space-11,
+.default\:row-gap-space-11 {
+  row-gap: var(--space-11-fixed);
+}
+
+.row-gap-space-12,
+.default\:row-gap-space-12 {
+  row-gap: var(--space-12-fixed);
+}
+
+.row-gap-space-13,
+.default\:row-gap-space-13 {
+  row-gap: var(--space-13-fixed);
+}
+
+.row-gap-space-14,
+.default\:row-gap-space-14 {
+  row-gap: var(--space-14-fixed);
+}
+
+.row-gap-space-15,
+.default\:row-gap-space-15 {
+  row-gap: var(--space-15-fixed);
+}
+
+.row-gap-space-16,
+.default\:row-gap-space-16 {
+  row-gap: var(--space-16-fixed);
+}
+
+.row-gap-space-17,
+.default\:row-gap-space-17 {
+  row-gap: var(--space-17-fixed);
+}
+
+.row-gap-space-18,
+.default\:row-gap-space-18 {
+  row-gap: var(--space-18-fixed);
+}
+
+.row-gap-space-19,
+.default\:row-gap-space-19 {
+  row-gap: var(--space-19-fixed);
+}
+
+/*
+* Breakpoints
+*/
+@media (--tablet-and-up) {
+  /* Tablet Row Gap */
+  .tablet\:row-gap-space-0 {
+    row-gap: var(--space-0-fixed);
+  }
+
+  .tablet\:row-gap-space-1 {
+    row-gap: var(--space-1-fixed);
+  }
+
+  .tablet\:row-gap-space-2 {
+    row-gap: var(--space-2-fixed);
+  }
+
+  .tablet\:row-gap-space-3 {
+    row-gap: var(--space-3-fixed);
+  }
+
+  .tablet\:row-gap-space-4 {
+    row-gap: var(--space-4-fixed);
+  }
+
+  .tablet\:row-gap-space-5 {
+    row-gap: var(--space-5-fixed);
+  }
+
+  .tablet\:row-gap-space-6 {
+    row-gap: var(--space-6-fixed);
+  }
+
+  .tablet\:row-gap-space-7 {
+    row-gap: var(--space-7-fixed);
+  }
+
+  .tablet\:row-gap-space-8 {
+    row-gap: var(--space-8-fixed);
+  }
+
+  .tablet\:row-gap-space-9 {
+    row-gap: var(--space-9-fixed);
+  }
+
+  .tablet\:row-gap-space-10 {
+    row-gap: var(--space-10-fixed);
+  }
+
+  .tablet\:row-gap-space-11 {
+    row-gap: var(--space-11-fixed);
+  }
+
+  .tablet\:row-gap-space-12 {
+    row-gap: var(--space-12-fixed);
+  }
+
+  .tablet\:row-gap-space-13 {
+    row-gap: var(--space-13-fixed);
+  }
+
+  .tablet\:row-gap-space-14 {
+    row-gap: var(--space-14-fixed);
+  }
+
+  .tablet\:row-gap-space-15 {
+    row-gap: var(--space-15-fixed);
+  }
+
+  .tablet\:row-gap-space-16 {
+    row-gap: var(--space-16-fixed);
+  }
+
+  .tablet\:row-gap-space-17 {
+    row-gap: var(--space-17-fixed);
+  }
+
+  .tablet\:row-gap-space-18 {
+    row-gap: var(--space-18-fixed);
+  }
+
+  .tablet\:row-gap-space-19 {
+    row-gap: var(--space-19-fixed);
+  }
+}
+
+@media (--laptop-and-up) {
+  /* Laptop Row Gap */
+  .laptop\:row-gap-space-0 {
+    row-gap: var(--space-0-fixed);
+  }
+
+  .laptop\:row-gap-space-1 {
+    row-gap: var(--space-1-fixed);
+  }
+
+  .laptop\:row-gap-space-2 {
+    row-gap: var(--space-2-fixed);
+  }
+
+  .laptop\:row-gap-space-3 {
+    row-gap: var(--space-3-fixed);
+  }
+
+  .laptop\:row-gap-space-4 {
+    row-gap: var(--space-4-fixed);
+  }
+
+  .laptop\:row-gap-space-5 {
+    row-gap: var(--space-5-fixed);
+  }
+
+  .laptop\:row-gap-space-6 {
+    row-gap: var(--space-6-fixed);
+  }
+
+  .laptop\:row-gap-space-7 {
+    row-gap: var(--space-7-fixed);
+  }
+
+  .laptop\:row-gap-space-8 {
+    row-gap: var(--space-8-fixed);
+  }
+
+  .laptop\:row-gap-space-9 {
+    row-gap: var(--space-9-fixed);
+  }
+
+  .laptop\:row-gap-space-10 {
+    row-gap: var(--space-10-fixed);
+  }
+
+  .laptop\:row-gap-space-11 {
+    row-gap: var(--space-11-fixed);
+  }
+
+  .laptop\:row-gap-space-12 {
+    row-gap: var(--space-12-fixed);
+  }
+
+  .laptop\:row-gap-space-13 {
+    row-gap: var(--space-13-fixed);
+  }
+
+  .laptop\:row-gap-space-14 {
+    row-gap: var(--space-14-fixed);
+  }
+
+  .laptop\:row-gap-space-15 {
+    row-gap: var(--space-15-fixed);
+  }
+
+  .laptop\:row-gap-space-16 {
+    row-gap: var(--space-16-fixed);
+  }
+
+  .laptop\:row-gap-space-17 {
+    row-gap: var(--space-17-fixed);
+  }
+
+  .laptop\:row-gap-space-18 {
+    row-gap: var(--space-18-fixed);
+  }
+
+  .laptop\:row-gap-space-19 {
+    row-gap: var(--space-19-fixed);
+  }
+}
+
+@media (--desktop-and-up) {
+  /* Desktop Row Gap */
+  .desktop\:row-gap-space-0 {
+    row-gap: var(--space-0-fixed);
+  }
+
+  .desktop\:row-gap-space-1 {
+    row-gap: var(--space-1-fixed);
+  }
+
+  .desktop\:row-gap-space-2 {
+    row-gap: var(--space-2-fixed);
+  }
+
+  .desktop\:row-gap-space-3 {
+    row-gap: var(--space-3-fixed);
+  }
+
+  .desktop\:row-gap-space-4 {
+    row-gap: var(--space-4-fixed);
+  }
+
+  .desktop\:row-gap-space-5 {
+    row-gap: var(--space-5-fixed);
+  }
+
+  .desktop\:row-gap-space-6 {
+    row-gap: var(--space-6-fixed);
+  }
+
+  .desktop\:row-gap-space-7 {
+    row-gap: var(--space-7-fixed);
+  }
+
+  .desktop\:row-gap-space-8 {
+    row-gap: var(--space-8-fixed);
+  }
+
+  .desktop\:row-gap-space-9 {
+    row-gap: var(--space-9-fixed);
+  }
+
+  .desktop\:row-gap-space-10 {
+    row-gap: var(--space-10-fixed);
+  }
+
+  .desktop\:row-gap-space-11 {
+    row-gap: var(--space-11-fixed);
+  }
+
+  .desktop\:row-gap-space-12 {
+    row-gap: var(--space-12-fixed);
+  }
+
+  .desktop\:row-gap-space-13 {
+    row-gap: var(--space-13-fixed);
+  }
+
+  .desktop\:row-gap-space-14 {
+    row-gap: var(--space-14-fixed);
+  }
+
+  .desktop\:row-gap-space-15 {
+    row-gap: var(--space-15-fixed);
+  }
+
+  .desktop\:row-gap-space-16 {
+    row-gap: var(--space-16-fixed);
+  }
+
+  .desktop\:row-gap-space-17 {
+    row-gap: var(--space-17-fixed);
+  }
+
+  .desktop\:row-gap-space-18 {
+    row-gap: var(--space-18-fixed);
+  }
+
+  .desktop\:row-gap-space-19 {
+    row-gap: var(--space-19-fixed);
+  }
+}

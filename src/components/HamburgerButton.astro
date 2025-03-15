@@ -1,0 +1,90 @@
+---
+// Components
+import Button from "./ui/Button.astro";
+---
+
+<Button
+  class="hamburger-button"
+  aria-label="Open main menu"
+  data-open-mobile-menu
+>
+  <span class="box">
+    <span class="inner"></span>
+  </span>
+  <span class="sr-only">Open main menu</span>
+</Button>
+
+<style>
+  .hamburger-button {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    /* Exit animation */
+    transition: opacity 450ms;
+
+    &::after {
+      --tap-increment: -6px;
+
+      content: "";
+      position: absolute;
+      top: calc(var(--tap-increment) * 3);
+      left: var(--tap-increment);
+      right: var(--tap-increment);
+      bottom: calc(var(--tap-increment) * 3);
+    }
+  }
+
+  .hamburger-button:hover .inner {
+    &::before,
+    &::after {
+      transform-origin: left;
+    }
+
+    &::before {
+      transform: scaleX(1.1);
+    }
+    &::after {
+      transform: scaleX(0.5);
+    }
+  }
+
+  .box {
+    --hamburger-size: 36px;
+
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    width: var(--hamburger-size);
+    height: var(--space-3-fixed);
+  }
+
+  .inner {
+    top: auto;
+    bottom: 0;
+    display: block;
+
+    &::before,
+    &::after {
+      position: absolute;
+      width: var(--hamburger-size);
+      height: 2px;
+      background-color: var(--color-text);
+    }
+
+    &::before,
+    &::after {
+      display: block;
+      content: "";
+
+      transform: scale(1);
+      transform-origin: left;
+      transition: transform 150ms var(--ease-in-out);
+    }
+
+    &::after {
+      top: 10px;
+    }
+  }
+</style>

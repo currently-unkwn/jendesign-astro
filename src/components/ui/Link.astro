@@ -1,0 +1,38 @@
+---
+type Props = {
+  href: string;
+  rel?: string;
+  isExternal?: boolean;
+  class?: string;
+  isHovered?: boolean;
+  [key: string]: any;
+};
+
+const {
+  href,
+  rel = "",
+  isExternal,
+  class: classList,
+  isHovered = false,
+  ...rest
+} = Astro.props;
+---
+
+<a
+  href={href}
+  rel={`${rel}${isExternal ? "nofollow noopener norefferer external" : ""}`}
+  class:list={["link", classList, { hovered: isHovered }]}
+  {...rest}
+>
+  <slot />
+</a>
+
+<style>
+  .link {
+    /* Enable vertical space */
+    display: inline-block;
+
+    position: relative;
+    text-decoration: none;
+  }
+</style>

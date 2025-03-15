@@ -1,0 +1,86 @@
+/*
+* FONTS
+*/
+
+/* Butler Free */
+
+@font-face {
+  font-display: fallback;
+  font-family: "Butler-Free Regular";
+  font-style: normal;
+  font-weight: 400;
+  src: local("Butler-Free Regular"),
+    url("/fonts/Butler-Free-Rmn.woff2") format("woff2");
+}
+
+/* cormorant-regular - latin */
+@font-face {
+  font-display: fallback; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: "Cormorant";
+  font-style: normal;
+  font-weight: 400;
+  src: url("/fonts/cormorant-v21-latin-regular.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+/* roboto-regular - cyrillic_latin */
+@font-face {
+  font-display: fallback; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  src: url("/fonts/roboto-v30-cyrillic_latin-regular.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+/* roboto-500 - cyrillic_latin */
+@font-face {
+  font-display: fallback; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 500;
+  src: url("/fonts/roboto-v30-cyrillic_latin-500.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+/* roboto-700 - cyrillic_latin */
+@font-face {
+  font-display: fallback; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 700;
+  src: url("/fonts/roboto-v30-cyrillic_latin-700.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+/* Mariupol Regular */
+
+@font-face {
+  font-display: fallback;
+  font-family: "Mariupol";
+  font-style: normal;
+  font-weight: 400;
+  src: local("Mariupol Regular"),
+    url("/fonts/Mariupol-Regular.woff") format("woff");
+}
+
+@font-face {
+  font-display: fallback;
+  font-family: "Mariupol";
+  font-style: normal;
+  font-weight: 500;
+  src: local("Mariupol Medium"),
+    url("/fonts/Mariupol-Medium.woff") format("woff");
+}
+
+@font-face {
+  font-display: fallback;
+  font-family: "Mariupol";
+  font-style: normal;
+  font-weight: 700;
+  src: local("Mariupol Bold"), url("/fonts/Mariupol-Bold.woff") format("woff");
+}
+
+/* Mariupol Fallback */
+@font-face {
+  font-family: "Adjusted Arial Fallback";
+  src: local(Arial);
+  size-adjust: 96%;
+  ascent-override: 79%;
+  descent-override: 17%;
+  line-gap-override: normal;
+}
