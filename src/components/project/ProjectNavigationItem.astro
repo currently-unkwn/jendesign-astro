@@ -28,12 +28,15 @@ const projectDirection =
           width={700}
           src={projectNavImg.image}
           alt={projectNavImg.alt}
+          transition:name={`/projects/${project.id}-image`}
         />
       </Frame>
 
       <Stack space="space-1">
         <span class="direction">{projectDirection}</span>
-        <h3 class="title">{title}</h3>
+        <h3 class="title" transition:name={`/projects/${project.id}-title`}>
+          {title}
+        </h3>
       </Stack>
     </Stack>
   </Link>

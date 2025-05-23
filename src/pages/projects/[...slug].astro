@@ -57,8 +57,8 @@ const { title, cover, info, projectPlanImg } = project.data;
 ---
 
 <BaseLayout seo={{ title: `${title} | ${BASE_DATA.title}` }}>
-  <Hero cover={cover} />
-  <Info title={title} info={info} />
+  <Hero cover={cover} id={project.id} />
+  <Info title={title} info={info} id={project.id} />
   {projectPlanImg && <ProjectPlan planImg={projectPlanImg} />}
   <ProjectLayout>
     <DynamicBgSection bgColor="gray-light-02" class="content">

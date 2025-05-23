@@ -1,16 +1,24 @@
-import "../lib/dialog.js";
-import "../lib/swiper.js";
+import initDialog from "@/lib/dialog";
+import initSwiper from "@/lib/swiper.js";
 import setDynamicBg from "@/lib/dynamicBg.js";
 import autoHideNav from "@/lib/autoHideNav.js";
 
-const sections = [...document.querySelectorAll(".dynamic-bg-section")];
+document.addEventListener("astro:page-load", () => {
+  /**
+   * AUTOHIDE NAV ON SCROLL
+   */
+  autoHideNav(".header", 400);
 
-/**
- * AUTOHIDE NAV ON SCROLL
- */
-autoHideNav(".header", 400);
+  /**
+   * INITIALIZE SWIPER
+   */
+  initSwiper();
 
-window.addEventListener("DOMContentLoaded", () => {
+  /**
+   * INITIALIZE DIALOG
+   */
+  initDialog();
+
   // const rootElement = document.documentElement;
   // rootElement.classList.add("no-bg-transition");
 

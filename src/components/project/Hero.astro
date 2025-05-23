@@ -9,11 +9,12 @@ import DynamicBgSection from "../DynamicBgSection.astro";
 
 // Types
 interface Props {
+  id?: string;
   cover: CollectionEntry<"projects">["data"]["cover"];
 }
 
 // Props
-const { cover } = Astro.props;
+const { cover, id } = Astro.props;
 ---
 
 <section class="project-hero">
@@ -23,6 +24,7 @@ const { cover } = Astro.props;
       width={1680}
       alt={cover.alt}
       class="project-hero-img"
+      transition:name={`/projects/${id}-image`}
     />
     <div class="scroll-down-wrapper">
       <ScrollDownButton />

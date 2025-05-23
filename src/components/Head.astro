@@ -1,6 +1,7 @@
 ---
 // Tools
 import { SEO, type Props as SEOProps } from "astro-seo";
+import { ClientRouter } from "astro:transitions";
 
 // Data
 import { BASE_DATA } from "@/data/siteData";
@@ -24,4 +25,6 @@ const { seo } = Astro.props;
     description={seo?.description ?? BASE_DATA.description}
     {...seo}
   />
+  <!-- Control for View Transitons -->
+  <ClientRouter />
 </head>

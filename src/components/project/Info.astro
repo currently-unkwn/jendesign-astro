@@ -14,12 +14,13 @@ import DynamicBgSection from "../DynamicBgSection.astro";
 
 // Types
 interface Props {
+  id?: string;
   title: string;
   info: CollectionEntry<"projects">["data"]["info"];
 }
 
 // Props
-const { title, info } = Astro.props;
+const { title, info, id } = Astro.props;
 const { city, square, realizationYear, img } = info;
 
 const descriptions = [
@@ -43,7 +44,12 @@ const descriptions = [
     <div class="spacer"></div>
     <Grid>
       <div class="info-container">
-        <Heading tagName="h2" size="h3" class="sticky-title">{title}</Heading>
+        <Heading
+          tagName="h2"
+          size="h3"
+          class="sticky-title"
+          transition:name={`/projects/${id}-title`}>{title}</Heading
+        >
 
         <div class="content">
           <Heading tagName="h2" size="h3" class="title">{title}</Heading>
@@ -140,47 +146,48 @@ const descriptions = [
 </style>
 
 <script>
-  /**
-   * Elements
-   */
-  let titleElement: HTMLElement | null = null;
-  let stickyTitleElement: HTMLElement | null = null;
+  document.addEventListener("astro:page-load", () => {
+    /**
+     * Elements
+     */
+    let titleElement: HTMLElement | null = null;
+    let stickyTitleElement: HTMLElement | null = null;
 
-  /**
-   * State
-   */
-  let titleOffsetTop: number = 0;
-  let stickyTitlePosition: number = 0;
+    /**
+     * State
+     */
+    let titleOffsetTop: number = 0;
+    let stickyTitlePosition: number = 0;
 
-  /**
-   * Functions
-   */
-  function handleScroll() {
-    if (!titleElement || !stickyTitleElement) return;
+    /**
+     * Functions
+     */
+    function handleScroll() {
+      if (!titleElement || !stickyTitleElement) return;
 
-    const currentScroll = window.scrollY;
+      const currentScroll = window.scrollY;
 
-    if (currentScroll + stickyTitlePosition > titleOffsetTop) {
-      // Intersecting
-      stickyTitleElement.classList.add("static");
-      titleElement.classList.remove("static");
-    } else {
-      // Not intersecting
-      stickyTitleElement.classList.remove("static");
-      titleElement.classList.add("static");
+      if (currentScroll + stickyTitlePosition > titleOffsetTop) {
+        // Intersecting
+        stickyTitleElement.classList.add("static");
+        titleElement.classList.remove("static");
+      } else {
+        // Not intersecting
+        stickyTitleElement.classList.remove("static");
+        titleElement.classList.add("static");
+      }
     }
-  }
 
-  function handleResize() {
-    if (titleElement && stickyTitleElement) {
-      const { top } = titleElement.getBoundingClientRect();
+    function handleResize() {
+      if (titleElement && stickyTitleElement) {
+        const { top } = titleElement.getBoundingClientRect();
 
-      titleOffsetTop = top + window.scrollY;
+        titleOffsetTop = top + window.scrollY;
+      }
     }
-  }
 
-  // Add onload to minimize elements flashing on page refresh
-  window.addEventListener("load", () => {
+    // Add onload to minimize elements flashing on page refresh
+
     titleElement = document.querySelector(".title") as HTMLHeadingElement;
     stickyTitleElement = document.querySelector(
       ".sticky-title"

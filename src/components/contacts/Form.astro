@@ -40,65 +40,67 @@ import { INPUT_DATA } from "@/data/siteData";
     message: string;
   };
 
-  const form = document.querySelector(
-    '[data-form="contact"]'
-  ) as HTMLFormElement;
-  const submitButton = form?.querySelector(
-    "button[type='submit']"
-  ) as HTMLButtonElement;
+  document.addEventListener("astro:page-load", () => {
+    const form = document.querySelector(
+      '[data-form="contact"]'
+    ) as HTMLFormElement;
+    const submitButton = form?.querySelector(
+      "button[type='submit']"
+    ) as HTMLButtonElement;
 
-  function resetForm() {
-    form.reset();
-    form.removeAttribute("data-submitting");
-    submitButton.innerText = "Submit";
-  }
-
-  // TODO: Make nice validation and success message
-  async function handleSubmit(event: SubmitEvent) {
-    event.preventDefault();
-
-    // If form is submitted, ignore
-    // if (form.hasAttribute("data-submitting")) return;
-
-    // Get data
-    const data = new FormData(form);
-    const dataObject = Object.fromEntries(data) as FormValues;
-
-    try {
-      form.setAttribute("data-submitting", "true");
-      submitButton.innerText = "Submitting...";
-
-      const request = await fetch("/api/send-email", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(dataObject),
-      });
-
-      if (!request.ok) {
-        throw new Error("Something went wrong with the request");
-      }
-
-      const response = await request.json();
-
-      submitButton.innerText = "Submit Sucess";
-
-      setTimeout(() => {
-        resetForm();
-      }, 3000);
-
-      // console.log(response);
-    } catch (error) {
-      console.log(error);
-
-      submitButton.innerText = "Submit Error";
-
-      setTimeout(() => {
-        resetForm();
-      }, 3000);
+    function resetForm() {
+      form.reset();
+      form.removeAttribute("data-submitting");
+      submitButton.innerText = "Submit";
     }
-  }
 
-  form?.addEventListener("submit", handleSubmit);
+    // TODO: Make nice validation and success message
+    async function handleSubmit(event: SubmitEvent) {
+      event.preventDefault();
+
+      // If form is submitted, ignore
+      // if (form.hasAttribute("data-submitting")) return;
+
+      // Get data
+      const data = new FormData(form);
+      const dataObject = Object.fromEntries(data) as FormValues;
+
+      try {
+        form.setAttribute("data-submitting", "true");
+        submitButton.innerText = "Submitting...";
+
+        const request = await fetch("/api/send-email", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(dataObject),
+        });
+
+        if (!request.ok) {
+          throw new Error("Something went wrong with the request");
+        }
+
+        const response = await request.json();
+
+        submitButton.innerText = "Submit Sucess";
+
+        setTimeout(() => {
+          resetForm();
+        }, 3000);
+
+        // console.log(response);
+      } catch (error) {
+        console.log(error);
+
+        submitButton.innerText = "Submit Error";
+
+        setTimeout(() => {
+          resetForm();
+        }, 3000);
+      }
+    }
+
+    form?.addEventListener("submit", handleSubmit);
+  });
 </script>

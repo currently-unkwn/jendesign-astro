@@ -113,19 +113,21 @@ import Socials from "./Socials.astro";
 <script>
   import { getBasePath } from "@/lib/helpers";
 
-  const { pathname } = window.location;
+  document.addEventListener("astro:page-load", () => {
+    const { pathname } = window.location;
 
-  // Select nav links based on pathname
-  const activeNavigationElements = [
-    ...document.querySelectorAll(
-      `.site-nav a[href="${getBasePath(pathname)}"]`
-    ),
-  ];
+    // Select nav links based on pathname
+    const activeNavigationElements = [
+      ...document.querySelectorAll(
+        `.site-nav a[href="${getBasePath(pathname)}"]`
+      ),
+    ];
 
-  // Set active class on corresponding link
-  activeNavigationElements.forEach((navElement) => {
-    if (navElement) {
-      navElement.classList.add("active");
-    }
+    // Set active class on corresponding link
+    activeNavigationElements.forEach((navElement) => {
+      if (navElement) {
+        navElement.classList.add("active");
+      }
+    });
   });
 </script>

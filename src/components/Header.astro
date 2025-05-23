@@ -51,31 +51,33 @@ import Logo from "./Logo.astro";
 </style>
 
 <script>
-  const contentSection = document.querySelector(
-    ".dynamic-bg-section.content"
-  ) as HTMLDivElement;
-  const header = document.querySelector(".header") as HTMLElement;
+  document.addEventListener("astro:page-load", () => {
+    const contentSection = document.querySelector(
+      ".dynamic-bg-section.content"
+    ) as HTMLDivElement;
+    const header = document.querySelector(".header") as HTMLElement;
 
-  /**
-   * Change header elements colors when website background is light
-   */
-  function callback(entries: IntersectionObserverEntry[]): void {
-    entries.forEach((entry: IntersectionObserverEntry) => {
-      if (entry.isIntersecting) {
-        header.classList.add("light-mode");
-      } else {
-        header.classList.remove("light-mode");
-      }
+    /**
+     * Change header elements colors when website background is light
+     */
+    function callback(entries: IntersectionObserverEntry[]): void {
+      entries.forEach((entry: IntersectionObserverEntry) => {
+        if (entry.isIntersecting) {
+          header.classList.add("light-mode");
+        } else {
+          header.classList.remove("light-mode");
+        }
+      });
+    }
+
+    const observer = new IntersectionObserver(callback, {
+      root: null,
+      threshold: [0, 0.1, 0.5],
+      rootMargin: "-50% 0px -50% 0px",
     });
-  }
 
-  const observer = new IntersectionObserver(callback, {
-    root: null,
-    threshold: [0, 0.1, 0.5],
-    rootMargin: "-50% 0px -50% 0px",
+    if (contentSection) {
+      observer.observe(contentSection);
+    }
   });
-
-  if (contentSection) {
-    observer.observe(contentSection);
-  }
 </script>
