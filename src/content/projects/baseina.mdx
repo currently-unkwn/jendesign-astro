@@ -1,0 +1,95 @@
+---
+title: Baseina
+info:
+  city: Kyiv, Pecherskyi district
+  square: 93м²
+  realizationYear: 2022
+  img:
+    src: ./images/baseina/baseina_info-image.jpg
+    alt: "Image"
+cover:
+  image: ./images/baseina/baseina_cover.jpg
+  alt: "Image"
+featureProjectImages:
+  - src: ./images/baseina/feature-project/baseina_feature_project_001.jpg
+    alt: "Feature Image"
+    aspectRatio: "3:2"
+    colSpan: "6"
+    display: "block"
+  - src: ./images/baseina/feature-project/baseina_feature_project_002.jpg
+    alt: "Feature Image"
+    aspectRatio: "3:4"
+    colSpan: "3"
+    display: "block"
+  - src: ./images/baseina/feature-project/baseina_feature_project_003.jpg
+    alt: "Feature Image"
+    aspectRatio: "3:4"
+    colSpan: "3"
+    display: "none"
+  - src: ./images/baseina/feature-project/baseina_feature_project_004.jpg
+    alt: "Feature Image"
+    aspectRatio: "3:2"
+    colSpan: "3"
+    display: "block"
+projectNavImg:
+  image: ./images/baseina/baseina_project-nav-image.jpg
+  alt: "Image"
+  aspectRatio: "2:3"
+pubDate: 2025-12-01
+---
+
+import livingRoom1 from "./images/baseina/project-images/baseina_project_001.jpg";
+import livingRoom2 from "./images/baseina/project-images/baseina_project_002.jpg";
+import livingRoom3 from "./images/baseina/project-images/baseina_project_003.jpg";
+import livingRoom4 from "./images/baseina/project-images/baseina_project_004.jpg";
+import livingRoom5 from "./images/baseina/project-images/baseina_project_006.jpg";
+import kitchen1 from "./images/baseina/project-images/baseina_project_019.jpg";
+import corridor1 from "./images/baseina/project-images/baseina_project_011.jpg";
+import corridor2 from "./images/baseina/project-images/baseina_project_010.jpg";
+import bedroom1 from "./images/baseina/project-images/baseina_project_016.jpg";
+import bedroom2 from "./images/baseina/project-images/baseina_project_018.jpg";
+import bedroom3 from "./images/baseina/project-images/baseina_project_017.jpg";
+import bathroom1 from "./images/baseina/project-images/baseina_project_014.jpg";
+import bathroom2 from "./images/baseina/project-images/baseina_project_013.jpg";
+import bathroom3 from "./images/baseina/project-images/baseina_project_015.jpg";
+import bathroom4 from "./images/baseina/project-images/baseina_project_012.jpg";
+
+<Wide src={livingRoom1} />
+
+<Diptych>
+  <Half src={livingRoom2} />
+  <Half src={livingRoom3} />
+</Diptych>
+
+<Narrow src={livingRoom4} />
+
+<Wide src={livingRoom5} />
+
+<Narrow src={kitchen1} />
+
+{/* prettier-ignore */}
+{/* <Diptych>
+
+  <Half src={corridor1} />
+  <Half src={corridor2} />
+</Diptych> */}
+
+<Full src={bedroom1} />
+
+{/* prettier-ignore */}
+{/* <Diptych>
+
+  <Half src={bedroom2} orientation="landscape" />
+  <Half src={bedroom3} orientation="landscape" />
+</Diptych> */}
+
+<Wide src={bathroom1} />
+
+{/* prettier-ignore */}
+{/* <Diptych>
+
+  <Half src={bathroom2} />
+  <Half src={bathroom3} />
+</Diptych> */}
+
+<Wide src={bathroom4} />

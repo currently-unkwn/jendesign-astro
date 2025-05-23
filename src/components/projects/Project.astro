@@ -1,0 +1,57 @@
+---
+// Tools
+import type { CollectionEntry } from "astro:content";
+
+// Compositions
+import Stack from "../compositions/Stack.astro";
+
+// Components
+import Title from "./Title.astro";
+import Images from "./Images.astro";
+import Separator from "../ui/Separator.astro";
+import Center from "../compositions/Center.astro";
+import Link from "../ui/Link.astro";
+
+// Types
+
+// Types
+interface Props {
+  slug: string;
+  title: string;
+  images: CollectionEntry<"projects">["data"]["featureProjectImages"];
+}
+
+const { slug, title, images } = Astro.props;
+---
+
+<Link href={`/projects/${slug}`} class="project">
+  <Center maxWidth="100%" space="space-7">
+    <Stack space={{ default: "space-4", tablet: "space-12" }} class="container">
+      <Title title={title} />
+      <Images images={images} />
+    </Stack>
+  </Center>
+
+  <Separator />
+</Link>
+
+<style>
+  @import "@styles/04-utilities/breakpoints.css";
+
+  .project :global(.title) {
+    transition: color var(--transition-default);
+  }
+
+  .project:hover :global(.title) {
+    color: var(--color-text-darker);
+  }
+
+  .container {
+    --_space: var(--space-4-fixed);
+    padding-block-end: var(--_space);
+
+    @media (--tablet-and-up) {
+      --_space: var(--space-16-fixed);
+    }
+  }
+</style>

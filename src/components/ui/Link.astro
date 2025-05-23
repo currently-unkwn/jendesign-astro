@@ -1,38 +1,52 @@
 ---
+type colorOptions = "primary" | "secondary" | "text" | "text-darker";
+
 type Props = {
   href: string;
   rel?: string;
   isExternal?: boolean;
   class?: string;
-  isHovered?: boolean;
+  color?: colorOptions;
+  hoverColor?: colorOptions;
+
   [key: string]: any;
 };
 
 const {
   href,
+  color,
+  hoverColor,
   rel = "",
   isExternal,
   class: classList,
-  isHovered = false,
   ...rest
 } = Astro.props;
+
+const linkColor = `var(--color-${color})`;
+const linkHover = `var(--color-${hoverColor})`;
 ---
 
 <a
   href={href}
   rel={`${rel}${isExternal ? "nofollow noopener norefferer external" : ""}`}
-  class:list={["link", classList, { hovered: isHovered }]}
+  class:list={["link", classList]}
   {...rest}
 >
   <slot />
 </a>
 
-<style>
+<style define:vars={{ linkColor, linkHover }}>
   .link {
     /* Enable vertical space */
     display: inline-block;
-
+    color: var(--linkColor);
     position: relative;
     text-decoration: none;
+
+    transition: color var(--transition-default);
+  }
+
+  .link:hover {
+    color: var(--linkHover);
   }
 </style>

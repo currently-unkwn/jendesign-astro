@@ -1,0 +1,201 @@
+---
+// Tools
+import type { CollectionEntry } from "astro:content";
+
+// Compositions
+import Frame from "../compositions/Frame.astro";
+
+// Components
+import Grid from "../ui/Grid.astro";
+import Heading from "../ui/Heading.astro";
+import InfoItem from "./InfoItem.astro";
+import MyPicture from "../ui/MyPicture.astro";
+import DynamicBgSection from "../DynamicBgSection.astro";
+
+// Types
+interface Props {
+  title: string;
+  info: CollectionEntry<"projects">["data"]["info"];
+}
+
+// Props
+const { title, info } = Astro.props;
+const { city, square, realizationYear, img } = info;
+
+const descriptions = [
+  {
+    category: "City",
+    text: city,
+  },
+  {
+    category: "Square",
+    text: square,
+  },
+  {
+    category: "Year",
+    text: realizationYear,
+  },
+];
+---
+
+<section class="project-info">
+  <DynamicBgSection bgColor="secondary">
+    <div class="spacer"></div>
+    <Grid>
+      <div class="info-container">
+        <Heading tagName="h2" size="h3" class="sticky-title">{title}</Heading>
+
+        <div class="content">
+          <Heading tagName="h2" size="h3" class="title">{title}</Heading>
+
+          {
+            descriptions.map((description) => (
+              <InfoItem description={description} />
+            ))
+          }
+        </div>
+      </div>
+
+      <div class="img-container">
+        <Frame ratio="5:7">
+          <MyPicture src={img.src} alt={img.alt} width={790} />
+        </Frame>
+      </div>
+    </Grid>
+  </DynamicBgSection>
+</section>
+
+<style>
+  @import "@styles/04-utilities/breakpoints.css";
+
+  .project-info {
+    padding-inline: var(--gutter);
+  }
+
+  .spacer {
+    height: var(--space-17-fixed);
+  }
+
+  .info-container {
+    grid-column: full-start / col-end;
+
+    @media (--tablet-and-up) {
+      grid-column: full-start / span 5;
+    }
+
+    @media (--laptop-and-up) {
+      grid-column: col-start / span 5;
+    }
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 40px;
+    height: 100%;
+  }
+
+  .project-info :global(.sticky-title) {
+    position: fixed;
+    top: 12rem;
+  }
+
+  .project-info :global(.title) {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .project-info :global(.title),
+  .project-info :global(.sticky-title) {
+    font-size: clamp(2.2rem, 2.9vw + 1.5rem, 4rem);
+    font-weight: var(--font-regular);
+    line-height: 1.2;
+
+    /* white-space: pre-wrap; */
+  }
+
+  .project-info :global(.sticky-title.static) {
+    position: absolute;
+    opacity: 0;
+  }
+
+  .project-info :global(.title.static) {
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  .img-container {
+    --_padding-top: var(--space-15-fixed);
+
+    grid-column: full-start / full-end;
+    margin-right: calc(var(--gutter) * -1);
+    padding-block-start: var(--_padding-top);
+
+    @media (--tablet-and-up) {
+      --_padding-top: 0;
+      grid-column: 8 / full-end;
+    }
+  }
+</style>
+
+<script>
+  /**
+   * Elements
+   */
+  let titleElement: HTMLElement | null = null;
+  let stickyTitleElement: HTMLElement | null = null;
+
+  /**
+   * State
+   */
+  let titleOffsetTop: number = 0;
+  let stickyTitlePosition: number = 0;
+
+  /**
+   * Functions
+   */
+  function handleScroll() {
+    if (!titleElement || !stickyTitleElement) return;
+
+    const currentScroll = window.scrollY;
+
+    if (currentScroll + stickyTitlePosition > titleOffsetTop) {
+      // Intersecting
+      stickyTitleElement.classList.add("static");
+      titleElement.classList.remove("static");
+    } else {
+      // Not intersecting
+      stickyTitleElement.classList.remove("static");
+      titleElement.classList.add("static");
+    }
+  }
+
+  function handleResize() {
+    if (titleElement && stickyTitleElement) {
+      const { top } = titleElement.getBoundingClientRect();
+
+      titleOffsetTop = top + window.scrollY;
+    }
+  }
+
+  // Add onload to minimize elements flashing on page refresh
+  window.addEventListener("load", () => {
+    titleElement = document.querySelector(".title") as HTMLHeadingElement;
+    stickyTitleElement = document.querySelector(
+      ".sticky-title"
+    ) as HTMLHeadingElement;
+
+    stickyTitlePosition = stickyTitleElement.offsetTop;
+
+    // Initialize on first page load
+    handleResize();
+    handleScroll();
+
+    /**
+     * Event Listeners
+     */
+    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("resize", handleResize);
+  });
+</script>

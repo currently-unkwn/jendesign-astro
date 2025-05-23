@@ -1,0 +1,33 @@
+---
+// Compositions
+import Cluster from "../compositions/Cluster.astro";
+
+// Components
+import Link from "../ui/Link.astro";
+import Text from "../ui/Text.astro";
+
+// Props
+const { contact } = Astro.props;
+const { title, value, link } = contact;
+---
+
+<Cluster alignItems="baseline" space="space-1">
+  <Text tagName="div" size="medium" class="title">{title}</Text>
+  <Link
+    href={link}
+    hoverColor="text-darker"
+    class="link"
+    target="_blank"
+    isExternal>{value}</Link
+  >
+</Cluster>
+
+<style>
+  .title {
+    opacity: 0.5;
+  }
+
+  .link {
+    font-size: var(--text-minus-1);
+  }
+</style>

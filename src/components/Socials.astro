@@ -1,0 +1,35 @@
+---
+// Tools
+import { Icon } from "astro-icon/components";
+
+// Compositions
+import Cluster from "./compositions/Cluster.astro";
+
+// Components
+import Link from "./ui/Link.astro";
+
+// Data
+import { SOCIAL_DATA } from "@/data/siteData";
+---
+
+<Cluster space="space-2" alignItems="center" justify="center">
+  {
+    SOCIAL_DATA.map((social) => (
+      <Link href={social.link} isExternal target="_blank">
+        <Icon name={social.icon} size={32} />
+      </Link>
+    ))
+  }
+</Cluster>
+
+<style>
+  [data-icon] {
+    opacity: 1;
+
+    transition: opacity var(--transition-default);
+  }
+
+  [data-icon]:hover {
+    opacity: 0.5;
+  }
+</style>

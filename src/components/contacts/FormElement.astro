@@ -1,0 +1,93 @@
+---
+import Stack from "../compositions/Stack.astro";
+import Text from "../ui/Text.astro";
+
+// Compositions
+// Components
+// Props
+const { input } = Astro.props;
+const {
+  formControl,
+  type,
+  name,
+  label,
+  placeholder,
+  pattern,
+  required,
+  ...rest
+} = input;
+
+const Tag = formControl;
+---
+
+<Stack space="space-1" class="form-group">
+  <Text tagName="label" size="x-small" for={name} class="uppercase"
+    >{label}</Text
+  >
+  <Tag
+    type={type}
+    name={name}
+    id={name}
+    placeholder={placeholder}
+    pattern={pattern}
+    required={required}
+    {...rest}
+  />
+</Stack>
+
+<style>
+  .form-group {
+    position: relative;
+
+    &::before {
+      content: "";
+
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      border-bottom: 1px solid currentColor;
+      opacity: 0.5;
+
+      transition: opacity 150ms var(--ease);
+    }
+
+    &:focus-within,
+    &:hover {
+      &::before {
+        opacity: 1;
+      }
+    }
+  }
+
+  /* Bring back opacity for input if its not empty */
+  .form-group:has(input:not(:placeholder-shown)),
+  .form-group:has(textarea:not(:placeholder-shown)) {
+    &::before {
+      opacity: 1;
+    }
+  }
+
+  .form-group label {
+    letter-spacing: 0.5px;
+  }
+
+  .form-group input,
+  .form-group textarea {
+    position: relative;
+    font-size: var(--text-minus-1);
+    color: inherit;
+    padding: var(--space-2-fixed) 0;
+    background: transparent;
+    border: none;
+    border-radius: 0;
+
+    &::placeholder {
+      color: inherit;
+      opacity: 0.25;
+    }
+  }
+
+  .form-group textarea {
+    resize: none;
+  }
+</style>

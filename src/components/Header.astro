@@ -1,6 +1,5 @@
 ---
 // Tools
-import { Icon } from "astro-icon/components";
 
 // Compositions
 import Center from "./compositions/Center.astro";
@@ -11,7 +10,7 @@ import HamburgerButton from "./HamburgerButton.astro";
 import Logo from "./Logo.astro";
 ---
 
-<header class="header">
+<header class="header is-visible">
   <Center maxWidth="83.5rem" space="space-7">
     <Cluster alignItems="center" justify="between" class="container">
       <Logo name="main-logo" color="text" />
@@ -28,9 +27,55 @@ import Logo from "./Logo.astro";
     right: 0;
 
     z-index: 9999;
+
+    transform: translateY(-100%);
+    transition: transform 340ms var(--ease);
   }
 
   .container {
     height: var(--header-height);
   }
+
+  .header.is-visible {
+    transform: translateY(0);
+  }
+
+  .header.light-mode {
+    & :global(.logo),
+    & :global(.hamburger-button) {
+      --_color: var(--color-primary);
+
+      color: var(--_color);
+    }
+  }
 </style>
+
+<script>
+  const contentSection = document.querySelector(
+    ".dynamic-bg-section.content"
+  ) as HTMLDivElement;
+  const header = document.querySelector(".header") as HTMLElement;
+
+  /**
+   * Change header elements colors when website background is light
+   */
+  function callback(entries: IntersectionObserverEntry[]): void {
+    entries.forEach((entry: IntersectionObserverEntry) => {
+      if (entry.isIntersecting) {
+        header.classList.add("light-mode");
+      } else {
+        header.classList.remove("light-mode");
+      }
+    });
+  }
+
+  const observer = new IntersectionObserver(callback, {
+    root: null,
+    threshold: [0, 0.1, 0.5],
+    rootMargin: "-50% 0px -50% 0px",
+  });
+
+  if (contentSection) {
+    observer.observe(contentSection);
+  }
+</script>

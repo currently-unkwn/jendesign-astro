@@ -1,32 +1,44 @@
 ---
 // Tools
-
 import { getCollection, render } from "astro:content";
 import type { CollectionEntry } from "astro:content";
 
 // Layout
 import BaseLayout from "@/layouts/BaseLayout.astro";
+import ProjectLayout from "@/layouts/ProjectLayout.astro";
 
 // Compositions
 
 // Components
+import Hero from "@/components/project/Hero.astro";
+import Info from "@/components/project/Info.astro";
+import ProjectPlan from "@/components/project/ProjectPlan.astro";
+import ProjectNavigation from "@/components/project/ProjectNavigation.astro";
+import { components } from "@/components/mdxComponents.js";
 
 // Data
 import { BASE_DATA } from "@/data/siteData";
+import DynamicBgSection from "@/components/DynamicBgSection.astro";
+import Separator from "@/components/ui/Separator.astro";
 
 export async function getStaticPaths() {
   const projects = await getCollection("projects", ({ data }) => !data.isDraft);
 
   // return object with slug and post data
-  return projects.map((project) => ({
-    params: {
-      slug: project.id,
-    },
-    props: {
-      project,
-      projects,
-    },
-  }));
+  return projects
+    .sort(
+      (a, b) =>
+        new Date(a.data.pubDate).getTime() - new Date(b.data.pubDate).getTime()
+    )
+    .map((project) => ({
+      params: {
+        slug: project.id,
+      },
+      props: {
+        project,
+        projects,
+      },
+    }));
 }
 
 // Types
@@ -35,14 +47,24 @@ interface Props {
   projects: CollectionEntry<"projects">[];
 }
 
+// Props
 const { project, projects } = Astro.props;
 const { Content } = await render(project);
-const { title, city, square, realizationYear, cover, infoImg, planScheme } =
-  project.data;
+const { title, cover, info, projectPlanImg } = project.data;
 
-console.log(project);
+// TEMP
+// console.log(projects);
 ---
 
 <BaseLayout seo={{ title: `${title} | ${BASE_DATA.title}` }}>
-  <h1>{title}</h1>
+  <Hero cover={cover} />
+  <Info title={title} info={info} />
+  {projectPlanImg && <ProjectPlan planImg={projectPlanImg} />}
+  <ProjectLayout>
+    <DynamicBgSection bgColor="gray-light-02" class="content">
+      <Content components={{ ...components }} />
+    </DynamicBgSection>
+  </ProjectLayout>
+  <ProjectNavigation projects={projects} currentProject={project} />
+  <Separator />
 </BaseLayout>

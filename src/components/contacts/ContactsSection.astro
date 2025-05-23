@@ -1,0 +1,33 @@
+---
+import Center from "../compositions/Center.astro";
+import Row from "../compositions/Row.astro";
+import Info from "../contacts/Info.astro";
+import Form from "../contacts/Form.astro";
+---
+
+<section class="contacts">
+  <Center maxWidth="72.5rem" space="space-7">
+    <Row rowGap={{ default: "space-10", tablet: "space-0" }}>
+      <Info />
+      <Form />
+    </Row>
+  </Center>
+</section>
+
+<style>
+  @import "@styles/04-utilities/breakpoints.css";
+
+  .contacts {
+    --_space-top: var(--space-10-fixed);
+    --_space-bottom: var(--space-12-fixed);
+
+    padding-block-start: var(--_space-top);
+    padding-block-end: var(--_space-bottom);
+
+    @media (--desktop-and-up) {
+      /* 400px */
+      --_space-top: var(--space-11-fixed);
+      --_space-bottom: var(--space-14-fixed);
+    }
+  }
+</style>

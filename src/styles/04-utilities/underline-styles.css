@@ -1,0 +1,47 @@
+/* 
+* Underline Styles 
+*/
+
+@import "./breakpoints.css";
+
+.underline {
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    background-color: currentColor;
+    width: 100%;
+    height: 0px;
+
+    transition: width var(--transition-default);
+  }
+
+  &:hover {
+    &::before {
+      width: 0px;
+    }
+  }
+}
+
+.underline.thickness-1 {
+  --_thickness: 1px;
+
+  &::before {
+    bottom: -3px;
+    border-bottom: var(--_thickness) solid currentColor;
+  }
+}
+
+.underline.thickness-2 {
+  --_thickness: 2px;
+
+  &::before {
+    bottom: -4px;
+    border-bottom: var(--_thickness) solid currentColor;
+  }
+
+  @media (--tablet-and-up) {
+    --_thickness: 3px;
+  }
+}

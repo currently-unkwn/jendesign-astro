@@ -1,0 +1,69 @@
+---
+// Tools
+import type { CollectionEntry } from "astro:content";
+import { getProjectIndex } from "@/lib/helpers";
+
+// Compositions
+
+//Components
+import Grid from "../ui/Grid.astro";
+import ProjectNavigationItem from "./ProjectNavigationItem.astro";
+import DynamicBgSection from "../DynamicBgSection.astro";
+
+// Types
+interface Props {
+  currentProject: CollectionEntry<"projects">;
+  projects: CollectionEntry<"projects">[];
+}
+
+const { projects, currentProject } = Astro.props;
+
+// Get index of the current project
+const index = getProjectIndex(projects, currentProject);
+
+// Set previous and next projects
+const previousProject = projects[index - 1];
+const nextProject = projects[index + 1];
+---
+
+<section class="project-navigation">
+  <DynamicBgSection bgColor="gray-light">
+    <Grid class="wrapper">
+      {
+        previousProject && (
+          <ProjectNavigationItem project={previousProject} direction="prev" />
+        )
+      }
+      {
+        nextProject && (
+          <ProjectNavigationItem project={nextProject} direction="next" />
+        )
+      }
+    </Grid>
+  </DynamicBgSection>
+</section>
+
+<style>
+  @import "@styles/04-utilities/breakpoints.css";
+
+  .project-navigation {
+    padding-block-start: var(--space-17-fixed);
+    padding-block-end: var(--space-14-fixed);
+
+    padding-inline: var(--gutter);
+
+    /* TEMP */
+    /* background-color: var(--color-gray-light); */
+  }
+
+  .project-navigation :global(.wrapper) {
+    --_row-gap: var(--space-11-fixed);
+
+    align-items: center;
+    row-gap: var(--_row-gap);
+
+    @media (--tablet-and-up) {
+      --_row-gap: 0;
+    }
+  }
+</style>

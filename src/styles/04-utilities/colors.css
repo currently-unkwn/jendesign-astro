@@ -5,31 +5,31 @@
 .color-primary {
   color: var(--color-primary);
 }
+
 .color-secondary {
   color: var(--color-secondary);
 }
+
 .color-accent {
   color: var(--color-accent);
 }
+
 .color-text {
   color: var(--color-text);
 }
+
 .color-white {
   color: var(--color-white);
 }
+
 .color-black {
   color: var(--color-black);
 }
 
-.color-gray-100 {
-  color: var(--color-gray-100);
+.color-gray {
+  color: var(--color-gray);
 }
-.color-gray-200 {
-  color: var(--color-gray-200);
-}
-.color-gray-400 {
-  color: var(--color-gray-400);
-}
+
 .color-dark-gray {
   color: var(--color-dark-gray);
 }

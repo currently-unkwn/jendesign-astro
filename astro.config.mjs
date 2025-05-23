@@ -1,13 +1,15 @@
 // @ts-check
-import { defineConfig } from 'astro/config';
+import { defineConfig } from "astro/config";
 
-import icon from 'astro-icon';
+import icon from "astro-icon";
+import sitemap from "@astrojs/sitemap";
+import mdx from "@astrojs/mdx";
 
-import sitemap from '@astrojs/sitemap';
-
-import mdx from '@astrojs/mdx';
+import netlify from "@astrojs/netlify";
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [icon(), sitemap(), mdx()]
+  integrations: [icon(), sitemap(), mdx()],
+  output: "static",
+  adapter: netlify(),
 });

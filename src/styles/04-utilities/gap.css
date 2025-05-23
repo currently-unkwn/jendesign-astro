@@ -107,6 +107,90 @@
 
 /* Breakpoints */
 
+@media (--tablet-s-and-up) {
+  /* Gap */
+
+  .tablet-s\:gap-space-0 {
+    gap: var(--space-0-fixed);
+  }
+
+  .tablet-s\:gap-space-1 {
+    gap: var(--space-1-fixed);
+  }
+
+  .tablet-s\:gap-space-2 {
+    gap: var(--space-2-fixed);
+  }
+
+  .tablet-s\:gap-space-3 {
+    gap: var(--space-3-fixed);
+  }
+
+  .tablet-s\:gap-space-4 {
+    gap: var(--space-4-fixed);
+  }
+
+  .tablet-s\:gap-space-5 {
+    gap: var(--space-5-fixed);
+  }
+
+  .tablet-s\:gap-space-6 {
+    gap: var(--space-6-fixed);
+  }
+
+  .tablet-s\:gap-space-7 {
+    gap: var(--space-7-fixed);
+  }
+
+  .tablet-s\:gap-space-8 {
+    gap: var(--space-8-fixed);
+  }
+
+  .tablet-s\:gap-space-9 {
+    gap: var(--space-9-fixed);
+  }
+
+  .tablet-s\:gap-space-10 {
+    gap: var(--space-10-fixed);
+  }
+
+  .tablet-s\:gap-space-11 {
+    gap: var(--space-11-fixed);
+  }
+
+  .tablet-s\:gap-space-12 {
+    gap: var(--space-12-fixed);
+  }
+
+  .tablet-s\:gap-space-13 {
+    gap: var(--space-13-fixed);
+  }
+
+  .tablet-s\:gap-space-14 {
+    gap: var(--space-14-fixed);
+  }
+
+  .tablet-s\:gap-space-15 {
+    gap: var(--space-15-fixed);
+  }
+
+  .tablet-s\:gap-space-16 {
+    gap: var(--space-16-fixed);
+  }
+
+  .tablet-s\:gap-space-17 {
+    gap: var(--space-17-fixed);
+  }
+
+  .tablet-s\:gap-space-18 {
+    gap: var(--space-18-fixed);
+  }
+
+  .tablet-s\:gap-space-19 {
+    gap: var(--space-19-fixed);
+  }
+}
+
 @media (--tablet-and-up) {
   /* Gap */
 

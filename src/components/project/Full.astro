@@ -1,0 +1,28 @@
+---
+// Tools
+import { type ImageMetadata } from "astro";
+import { getRatio } from "@/lib/helpers";
+
+// Compositions
+import Frame from "../compositions/Frame.astro";
+
+// Components
+import MyPicture from "../ui/MyPicture.astro";
+import ImageGrid from "./ImageGrid.astro";
+
+interface Props {
+  src: ImageMetadata;
+  alt?: string;
+  orientation?: "landscape" | "portrait" | "wide" | "square";
+}
+
+const { src, alt = "Project image", orientation = "wide" } = Astro.props;
+
+const ratio = getRatio(orientation);
+---
+
+<ImageGrid>
+  <Frame ratio={ratio} class="col-12">
+    <MyPicture src={src} width={1400} alt={alt} />
+  </Frame>
+</ImageGrid>

@@ -1,0 +1,75 @@
+---
+// Tools
+import type { CollectionEntry } from "astro:content";
+
+// Components
+import MyPicture from "../ui/MyPicture.astro";
+import ScrollDownButton from "../ScrollDownButton.astro";
+import DynamicBgSection from "../DynamicBgSection.astro";
+
+// Types
+interface Props {
+  cover: CollectionEntry<"projects">["data"]["cover"];
+}
+
+// Props
+const { cover } = Astro.props;
+---
+
+<section class="project-hero">
+  <DynamicBgSection bgColor="white" style="height: 100%;">
+    <MyPicture
+      src={cover.image}
+      width={1680}
+      alt={cover.alt}
+      class="project-hero-img"
+    />
+    <div class="scroll-down-wrapper">
+      <ScrollDownButton />
+    </div>
+  </DynamicBgSection>
+</section>
+
+<style>
+  .project-hero {
+    position: relative;
+    height: 100%;
+
+    &::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      display: block;
+
+      width: 100%;
+      height: 100%;
+      background-image: linear-gradient(
+        0deg,
+        hsl(200 11% 5% / 0.5),
+        hsl(200 11% 5% / 0.2)
+      );
+    }
+  }
+
+  .project-hero :global(picture) {
+    height: 100%;
+  }
+
+  .project-hero :global(.project-hero-img) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .scroll-down-wrapper {
+    position: absolute;
+    bottom: 35px;
+
+    display: flex;
+    justify-content: center;
+
+    width: 100%;
+
+    z-index: 10;
+  }
+</style>

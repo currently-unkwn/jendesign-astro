@@ -1,0 +1,28 @@
+---
+
+---
+
+<div
+  class="dynamic-bg"
+  style={{ "--background-color": "var(--dynamic-bg-color)" }}
+>
+</div>
+
+<style>
+  /* This is referenced by the no-bg-transition class on the html element */
+  :global(.no-bg-transition) .dynamic-bg {
+    transition: none !important;
+  }
+
+  .dynamic-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: -1;
+    background-color: var(--background-color);
+
+    transition: background-color 1000ms;
+  }
+</style>

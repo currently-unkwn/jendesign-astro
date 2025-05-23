@@ -16,6 +16,8 @@ import Button from "./ui/Button.astro";
 
 <style>
   .hamburger-button {
+    --_color: var(--color-text);
+
     position: relative;
     display: flex;
     align-items: center;
@@ -70,7 +72,7 @@ import Button from "./ui/Button.astro";
       position: absolute;
       width: var(--hamburger-size);
       height: 2px;
-      background-color: var(--color-text);
+      background-color: var(--_color);
     }
 
     &::before,

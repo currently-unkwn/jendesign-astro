@@ -1,0 +1,67 @@
+---
+// Tools
+import type { CollectionEntry } from "astro:content";
+
+// Compositions
+import Row from "@compositions/Row.astro";
+
+// Components
+import MyPicture from "../ui/MyPicture.astro";
+import Frame from "../compositions/Frame.astro";
+
+// Types
+interface Props {
+  images: CollectionEntry<"projects">["data"]["featureProjectImages"];
+}
+
+const { images } = Astro.props;
+// Get first three images
+const filteredImages = images.filter((_, index) => index < 3);
+---
+
+<Row columnGap={{ default: "space-4", tablet: "space-7" }} class="images">
+  {
+    filteredImages.map((image) => {
+      return (
+        <figure
+          class={`col-12 tablet-s:col-6 tablet:col-${image.colSpan}`}
+          style={{ "--display": image.display }}
+        >
+          <Frame ratio={image.aspectRatio}>
+            <MyPicture src={image.src} alt={image.alt} />
+          </Frame>
+        </figure>
+      );
+    })
+  }
+</Row>
+
+<style>
+  @import "@styles/04-utilities/breakpoints.css";
+
+  .images figure {
+    /* By default only 1st is visible */
+    &:nth-child(2),
+    &:nth-child(3) {
+      display: none;
+    }
+
+    /* From small tablet two, configurable via display variable */
+    &:nth-child(1),
+    &:nth-child(2),
+    &:nth-child(3) {
+      @media (--tablet-s-and-up) {
+        display: var(--display);
+      }
+    }
+
+    /* From tablet all three */
+    &:nth-child(1),
+    &:nth-child(2),
+    &:nth-child(3) {
+      @media (--tablet-and-up) {
+        display: block;
+      }
+    }
+  }
+</style>

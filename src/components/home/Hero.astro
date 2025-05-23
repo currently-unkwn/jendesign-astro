@@ -3,26 +3,31 @@
 import Center from "../compositions/Center.astro";
 
 // Components
+import MyPicture from "../ui/MyPicture.astro";
+import Grid from "../ui/Grid.astro";
 
 // Data
 import { ABOUT_DATA } from "@/data/siteData";
+
+// Assets
 import profileImg from "@/assets/profile/profile-light-blue.jpg";
-import MyPicture from "../ui/MyPicture.astro";
-import Grid from "../ui/Grid.astro";
+import DynamicBgSection from "../DynamicBgSection.astro";
 ---
 
 <section class="hero">
-  <Center maxWidth="83.5rem" space="space-7">
-    <Grid class="hero-grid">
-      <div class="about-wrapper">
-        <h1 class="about-text">{ABOUT_DATA.text}</h1>
-      </div>
+  <DynamicBgSection bgColor="primary">
+    <Center maxWidth="83.5rem" space="space-7">
+      <Grid class="hero-grid">
+        <div class="about-wrapper">
+          <h1 class="about-text">{ABOUT_DATA.text}</h1>
+        </div>
 
-      <div class="profile-img-wrapper">
-        <MyPicture src={profileImg} width={600} alt="" class="profile-img" />
-      </div>
-    </Grid>
-  </Center>
+        <div class="profile-img-wrapper">
+          <MyPicture src={profileImg} width={600} alt="" class="profile-img" />
+        </div>
+      </Grid>
+    </Center>
+  </DynamicBgSection>
 </section>
 
 <style>
@@ -34,7 +39,7 @@ import Grid from "../ui/Grid.astro";
     text-align: center;
 
     /** TEMP */
-    background-color: var(--color-primary);
+    /* background-color: var(--color-primary); */
 
     @media (--tablet-and-up) {
       --_vertical-spacing: var(--space-12-fixed);

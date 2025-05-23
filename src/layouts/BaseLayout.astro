@@ -8,6 +8,9 @@ import Footer from "@/components/Footer.astro";
 import Header from "@/components/Header.astro";
 import MobileMenuDialog from "@/components/ui/MobileMenuDialog.astro";
 import MobileMenu from "@/components/MobileMenu.astro";
+import DynamicBg from "@/components/DynamicBg.astro";
+
+const isContactsPage = Astro.originPathname === "/contacts";
 ---
 
 <html lang="en">
@@ -15,11 +18,12 @@ import MobileMenu from "@/components/MobileMenu.astro";
 
   <body>
     <div id="root">
+      <DynamicBg />
       <Header />
-      <main>
-        <slot />
-      </main>
-      <Footer />
+
+      <slot />
+
+      {isContactsPage ? "" : <Footer />}
     </div>
 
     <MobileMenuDialog name="mobile-menu">

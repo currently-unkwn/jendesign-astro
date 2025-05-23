@@ -1,0 +1,19 @@
+---
+import Link from "./Link.astro";
+
+interface Props {
+  class?: string;
+  [key: string]: any;
+}
+
+const { href, class: classList, ...rest } = Astro.props;
+---
+
+<Link href={href} class:list={["nav-link", classList]} {...rest}>
+  <slot />
+</Link>
+
+<style>
+  .nav-link {
+  }
+</style>

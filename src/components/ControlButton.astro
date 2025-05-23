@@ -1,0 +1,102 @@
+---
+import Button from "./ui/Button.astro";
+
+interface Props {
+  class?: string;
+}
+
+const { class: classList, ...rest } = Astro.props;
+---
+
+<Button class:list={["swiper-nav-button", classList]} {...rest}>
+  <slot />
+</Button>
+
+<style>
+  @import "@styles/04-utilities/breakpoints.css";
+
+  .swiper-nav-button {
+    --shift: 8px;
+
+    display: inline-block;
+
+    padding: var(--space-2-fixed);
+    margin-block-start: var(--space-8-fixed);
+
+    background-color: var(--color-secondary-darkest);
+    color: var(--color-text);
+
+    border-radius: var(--rounded-full);
+
+    transition:
+      transform 250ms,
+      background-color 250ms,
+      color 250ms;
+    will-change: transform;
+
+    &:hover {
+      background-color: var(--color-text-darker);
+      color: var(--color-secondary-darkest);
+    }
+
+    & :global([data-icon]) {
+      --_size: var(--space-6-fixed);
+
+      width: var(--_size);
+      height: var(--_size);
+
+      @media (--tablet-and-up) {
+        --_size: var(--space-8-fixed);
+      }
+    }
+
+    @media (--tablet-and-up) {
+      position: absolute;
+      top: 50%;
+      bottom: auto;
+      margin-block-start: 0;
+      padding: var(--space-6-fixed);
+      z-index: 10;
+      transform: translateY(-50%);
+
+      &.swiper-button-disabled {
+        opacity: 0;
+        transform: translateY(-50%) scale(0.5);
+        transform-origin: 50% 50%;
+        cursor: auto;
+        pointer-events: none;
+
+        transition: all 350ms;
+      }
+    }
+  }
+
+  .swiper-nav-button:global(.swiper-next) {
+    --_margin-left: var(--space-3-fixed);
+
+    margin-inline-start: var(--_margin-left);
+
+    @media (--tablet-and-up) {
+      --_margin-left: 0;
+
+      left: auto;
+      right: var(--gutter);
+    }
+  }
+
+  .swiper-nav-button:global(.swiper-prev):hover {
+    transform: translateX(calc(var(--shift) * -1));
+
+    @media (--tablet-and-up) {
+      transform: translate(calc(var(--shift) * -1), -50%);
+    }
+  }
+
+  .swiper-nav-button:global(.swiper-next):hover {
+    transform: translateX(var(--shift));
+
+    @media (--tablet-and-up) {
+      transform: translate(var(--shift), -50%);
+    }
+  }
+</style>

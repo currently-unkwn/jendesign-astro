@@ -1,0 +1,28 @@
+---
+// Compositions
+import Row from "../compositions/Row.astro";
+
+// Components
+import Heading from "../ui/Heading.astro";
+
+// Types
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<Row columnGap={{ default: "space-4", tablet: "space-7" }}>
+  <div class="title col-12 tablet:col-start-7 tablet:col-6">
+    <Heading tagName="h2" size={{ default: "h6", tablet: "h3" }}
+      >{title}</Heading
+    >
+  </div>
+</Row>
+
+<style>
+  .title :global(h2) {
+    font-weight: var(--font-regular);
+  }
+</style>

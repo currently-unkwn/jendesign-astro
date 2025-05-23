@@ -1,0 +1,94 @@
+---
+import type { CollectionEntry } from "astro:content";
+import Link from "../ui/Link.astro";
+import MyPicture from "../ui/MyPicture.astro";
+import Heading from "../ui/Heading.astro";
+import Stack from "../compositions/Stack.astro";
+import Frame from "../compositions/Frame.astro";
+
+// Types
+interface Props {
+  project: CollectionEntry<"projects">;
+  class?: string;
+  direction: string;
+}
+
+const { project, class: classList, direction } = Astro.props;
+const { title, projectNavImg } = project.data;
+
+const projectDirection =
+  direction === "prev" ? "Previous project" : "Next project";
+---
+
+<article class:list={["project-nav-item", `${direction}-project`, classList]}>
+  <Link href={`/projects/${project.id}`}>
+    <Stack space="space-6">
+      <Frame ratio={projectNavImg.aspectRatio} class="project-nav-img">
+        <MyPicture
+          width={700}
+          src={projectNavImg.image}
+          alt={projectNavImg.alt}
+        />
+      </Frame>
+
+      <Stack space="space-1">
+        <span class="direction">{projectDirection}</span>
+        <h3 class="title">{title}</h3>
+      </Stack>
+    </Stack>
+  </Link>
+</article>
+
+<style>
+  @import "@styles/04-utilities/breakpoints.css";
+
+  .project-nav-item {
+    cursor: pointer;
+
+    grid-column: full-start / full-end;
+
+    &.prev-project {
+      @media (--tablet-and-up) {
+        grid-column: full-start / 7;
+      }
+
+      @media (--laptop-and-up) {
+        grid-column: col-start / 6;
+      }
+    }
+
+    &.next-project {
+      @media (--tablet-and-up) {
+        grid-column: 7 / full-end;
+      }
+
+      @media (--laptop-and-up) {
+        grid-column: 8 / col-end;
+      }
+    }
+  }
+
+  .project-nav-item :global(.project-nav-img) {
+    transition: opacity var(--transition-default);
+  }
+
+  .project-nav-item:hover :global(.project-nav-img) {
+    opacity: 0.8;
+  }
+
+  .direction,
+  .title {
+    color: var(--color-black-lighter);
+  }
+
+  .direction {
+    /** 16-20 */
+    font-size: clamp(1rem, 0.376vw + 0.925rem, 1.266rem);
+  }
+
+  .title {
+    /** 20-32 */
+    font-size: clamp(1.266rem, 1.079vw + 1.05rem, 2.027rem);
+    line-height: 1.1;
+  }
+</style>

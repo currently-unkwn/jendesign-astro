@@ -1,0 +1,46 @@
+---
+import { Icon } from "astro-icon/components";
+import Button from "./ui/Button.astro";
+import Link from "./ui/Link.astro";
+---
+
+<Button class="scroll-down-button">
+  <Link href="#" class="inline">
+    <div class="inner">
+      <div class="line"></div>
+      <Icon name="arrow-down-s-fill" size={25} />
+    </div>
+  </Link>
+</Button>
+
+<style>
+  .scroll-down-button {
+    width: 25px;
+    height: 80px;
+
+    overflow: hidden;
+  }
+  .inner {
+    position: relative;
+    height: 100%;
+    width: 100%;
+
+    animation: drawIn 3.5s forwards infinite var(--ease);
+  }
+
+  .line {
+    position: absolute;
+    left: 10px;
+    bottom: 9px;
+    height: 69.5px;
+    width: 1px;
+    background-color: var(--color-text);
+  }
+
+  .inner svg {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    color: var(--color-text);
+  }
+</style>

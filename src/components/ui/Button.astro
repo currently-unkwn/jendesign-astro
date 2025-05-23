@@ -1,6 +1,7 @@
 ---
 interface Props {
   class?: string;
+  [key: string]: any;
 }
 
 const { class: classList, ...rest } = Astro.props;

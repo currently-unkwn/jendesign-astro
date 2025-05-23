@@ -15,7 +15,12 @@ import Link from "./ui/Link.astro";
       navData.map((navItem) => {
         return (
           <li>
-            <Link href={navItem.href} class="mobile-nav-link">
+            <Link
+              href={navItem.href}
+              class="mobile-nav-link"
+              color="secondary"
+              hoverColor="secondary"
+            >
               {navItem.title}
             </Link>
           </li>
@@ -25,4 +30,59 @@ import Link from "./ui/Link.astro";
   </ul>
 </nav>
 
-<style></style>
+<style>
+  @import "@styles/04-utilities/breakpoints.css";
+
+  .mobile-nav {
+    --_vertical-space: var(--space-14-fixed);
+
+    margin-block-start: var(--_vertical-space);
+
+    @media (--tablet-and-up) {
+      --_vertical-space: var(--space-17-fixed);
+    }
+
+    @media (--laptop-and-up) {
+      --_vertical-space: 0;
+    }
+  }
+
+  .mobile-nav ul {
+    --_gap: var(--space-2-fixed);
+    --_direction: column;
+
+    display: flex;
+    flex-direction: var(--_direction);
+    gap: var(--_gap);
+
+    @media (--laptop-and-up) {
+      --_gap: var(--space-8-fixed);
+      --_direction: row;
+    }
+  }
+
+  .mobile-nav-link {
+    --_size: var(--text-3);
+    /* --_color: var(--color-secondary); */
+
+    font-size: var(--_size);
+    /* color: var(--_color); */
+    opacity: 0.5;
+
+    /** Enter Transition */
+    transition: opacity var(--transition-default);
+
+    &:hover {
+      /* --_color: var(--color-secondary); */
+      opacity: 1;
+    }
+
+    @media (--laptop-and-up) {
+      --_size: var(--text-base);
+    }
+  }
+
+  .mobile-nav-link.active {
+    opacity: 1;
+  }
+</style>

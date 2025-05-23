@@ -1,0 +1,33 @@
+---
+// Tools
+
+// Compositions
+import Stack from "../compositions/Stack.astro";
+
+// Components
+
+// Types
+
+// Data
+const { description } = Astro.props;
+const { category, text } = description;
+---
+
+<Stack tagName="div" space="space-1">
+  <span class="category">{category}</span>
+  <p class="value">{text}</p>
+</Stack>
+
+<style>
+  .category {
+    display: block;
+    /** 16-20 */
+    font-size: clamp(1rem, 0.376vw + 0.925rem, 1.266rem);
+  }
+
+  .value {
+    /** 20-32 */
+    font-size: clamp(1.266rem, 1.079vw + 1.05rem, 2.027rem);
+    line-height: 1.1;
+  }
+</style>

@@ -1,0 +1,39 @@
+---
+import Button from "./ui/Button.astro";
+---
+
+<Button class="close-button" data-close-dialog aria-label="Close menu">
+  <span class="line"></span>
+  <span class="line"></span>
+  <span class="sr-only">Close menu</span>
+</Button>
+
+<style>
+  .close-button {
+    --close-button-size: 28px;
+
+    position: relative;
+    width: var(--close-button-size);
+    height: var(--close-button-size);
+
+    & span.line {
+      position: absolute;
+      top: 50%;
+      right: 0;
+      display: block;
+      width: var(--close-button-size);
+      height: 2px;
+      background-color: var(--color-secondary);
+      transform: rotate(45deg);
+      transition: transform var(--transition-default);
+    }
+
+    & span.line:nth-of-type(2) {
+      transform: rotate(-45deg);
+    }
+
+    &:hover span.line {
+      transform: rotate(0deg);
+    }
+  }
+</style>

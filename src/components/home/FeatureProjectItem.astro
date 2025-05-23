@@ -1,0 +1,195 @@
+---
+// Tools
+import type { CollectionEntry } from "astro:content";
+import Frame from "../compositions/Frame.astro";
+import MyPicture from "../ui/MyPicture.astro";
+import Link from "../ui/Link.astro";
+import Heading from "../ui/Heading.astro";
+import ControlButton from "../ControlButton.astro";
+import { Icon } from "astro-icon/components";
+import Cluster from "../compositions/Cluster.astro";
+
+// Compositions
+
+// Components
+
+// Sizes: 1135 and 505
+
+// Types
+interface Props {
+  slug: string;
+  title: string;
+  images: CollectionEntry<"projects">["data"]["featureProjectImages"];
+}
+
+const { slug, title, images } = Astro.props;
+---
+
+<div class="swiper">
+  <div class="title-mobile" slot="container-start">
+    <Heading tagName="h3" size={{ default: "h6", tablet: "h4" }} class="title"
+      ><Link href={`/projects/${slug}`} color="text" hoverColor="text-darker"
+        >{title}</Link
+      ></Heading
+    >
+  </div>
+
+  <div class="swiper-wrapper">
+    <div class="swiper-slide">
+      <Cluster alignItems="center" class="title-desktop height-full">
+        <Heading
+          tagName="h3"
+          size={{ default: "h6", tablet: "h4" }}
+          class="title"
+          ><Link
+            href={`/projects/${slug}`}
+            color="text"
+            hoverColor="text-darker">{title}</Link
+          ></Heading
+        >
+      </Cluster>
+    </div>
+    {
+      images.map((image) => {
+        const aspectRatio = image.aspectRatio === "3:4" ? 0.75 : 1.5;
+
+        return (
+          <div class="swiper-slide">
+            <MyPicture
+              src={image.src}
+              alt={image.alt}
+              style={{ aspectRatio: aspectRatio }}
+            />
+          </div>
+        );
+      })
+    }
+    <div class="swiper-slide">
+      <Cluster alignItems="center" class="link-more-container height-full">
+        <Link href={`/projects/${slug}`} class="link-more underline thickness-1"
+          >View project <span>&rarr;</span></Link
+        >
+      </Cluster>
+    </div>
+  </div>
+
+  <ControlButton class="swiper-prev">
+    <Icon name="arrow-left" />
+  </ControlButton>
+  <ControlButton class="swiper-next">
+    <Icon name="arrow-right" />
+  </ControlButton>
+</div>
+
+<style>
+  @import "@styles/04-utilities/breakpoints.css";
+
+  .swiper {
+    position: relative;
+    padding-inline: var(--gutter);
+    margin-bottom: 8vh;
+
+    @media (--tablet-s-and-up) {
+      margin-top: 15vh;
+    }
+
+    @media (--tablet-and-up) {
+      margin-bottom: 15vh;
+    }
+
+    @media (--laptop-and-up) {
+      margin-top: 18vh;
+      margin-bottom: 18vh;
+    }
+  }
+
+  .swiper-wrapper {
+    height: 31.25rem;
+
+    @media (--laptop-and-up) {
+      height: 75vh;
+    }
+  }
+
+  .swiper-slide {
+    width: auto;
+
+    & :global(picture) {
+      height: 100%;
+    }
+
+    & :global(img) {
+      height: 100%;
+      width: auto;
+      object-fit: cover;
+    }
+  }
+
+  .swiper-slide:first-child {
+    display: none;
+
+    @media (--tablet-s-and-up) {
+      display: block;
+    }
+  }
+
+  .title-desktop {
+    min-width: 250px;
+
+    @media (--tablet-and-up) {
+      min-width: 420px;
+    }
+
+    @media (--laptop-and-up) {
+      min-width: 600px;
+    }
+  }
+
+  .title-mobile {
+    padding: var(--space-8-fixed) 0 var(--space-6-fixed) 0;
+
+    @media (--tablet-s-and-up) {
+      display: none;
+    }
+  }
+
+  .title :global(a) {
+    font-weight: var(--font-regular);
+    letter-spacing: 0.7px;
+    text-transform: uppercase;
+  }
+
+  .link-more-container {
+    --_horizontal-space: var(--space-13-fixed);
+
+    padding-inline: var(--_horizontal-space);
+
+    background-color: var(--color-secondary-darkest);
+
+    @media (--tablet-and-up) {
+      --_horizontal-space: var(--space-16-fixed);
+    }
+  }
+
+  .link-more {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+
+    color: var(--color-text);
+
+    & span {
+      display: block;
+      padding-left: var(--space-2-fixed);
+
+      transition: transform 400ms;
+    }
+
+    &:hover {
+      & span {
+        transform: translateX(6px);
+      }
+    }
+  }
+</style>

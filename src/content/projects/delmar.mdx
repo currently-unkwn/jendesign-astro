@@ -1,16 +1,78 @@
 ---
 title: Delmar
-city: Kyiv, Pecherskyi district
-square: 90м²
-realizationYear: 2021
+info:
+  city: Kyiv, Pecherskyi district
+  square: 90м²
+  realizationYear: 2021
+  img:
+    src: ./images/delmar/delmar_info-image.jpg
+    alt: "Image"
 cover:
   image: ./images/delmar/delmar_cover.jpg
   alt: "Image"
-infoImg:
-  image: ./images/delmar/delmar_info-image.jpg
+featureProjectImages:
+  - src: ./images/delmar/feature-project/delmar_feature_project_001.jpg
+    alt: "Feature Image"
+    aspectRatio: "3:2"
+    colSpan: "3"
+    display: "none"
+  - src: ./images/delmar/feature-project/delmar_feature_project_002.jpg
+    alt: "Feature Image"
+    aspectRatio: "3:2"
+    colSpan: "3"
+    display: "block"
+  - src: ./images/delmar/feature-project/delmar_feature_project_003.jpg
+    alt: "Feature Image"
+    aspectRatio: "3:2"
+    colSpan: "6"
+    display: "block"
+  - src: ./images/delmar/feature-project/delmar_feature_project_004.jpg
+    alt: "Feature Image"
+    aspectRatio: "3:2"
+    colSpan: "3"
+    display: "block"
+projectNavImg:
+  image: ./images/delmar/delmar_project-nav-image.jpg
   alt: "Image"
-planScheme:
-  image: ./images/delmar/delmar_plan-scheme.jpg
-  alt: "Image"
-pubDate: 2024-12-02
+  aspectRatio: "3:2"
+pubDate: 2025-12-02
 ---
+
+{/* Assets */}
+import livingRoom1 from "./images/delmar/project-images/delmar_project_004.jpg";
+import kitchen1 from "./images/delmar/project-images/delmar_project_005.jpg";
+import kitchen2 from "./images/delmar/project-images/delmar_project_008.jpg";
+import corridor1 from "./images/delmar/project-images/delmar_project_016.jpg";
+import livingRoom2 from "./images/delmar/project-images/delmar_project_010.jpg";
+import livingRoom3 from "./images/delmar/project-images/delmar_project_017.jpg";
+import bedroom1 from "./images/delmar/project-images/delmar_project_014.jpg";
+import bedroom2 from "./images/delmar/project-images/delmar_project_015.jpg";
+import bedroom3 from "./images/delmar/project-images/delmar_project_013.jpg";
+import bathroom1 from "./images/delmar/project-images/delmar_project_011.jpg";
+import bathroom2 from "./images/delmar/project-images/delmar_project_012.jpg";
+
+{/* Layout */}
+
+<Wide src={livingRoom1} />
+
+<Diptych>
+  <Half src={kitchen1} orientation="landscape" />
+  <Half src={kitchen2} orientation="landscape" />
+</Diptych>
+
+<Wide src={corridor1} />
+
+<Diptych>
+  <Half src={livingRoom2} />
+  <Half src={livingRoom3} />
+</Diptych>
+
+<Full src={bedroom1} />
+
+<Diptych>
+  <Half src={bedroom2} orientation="landscape" />
+  <Half src={bedroom3} orientation="landscape" />
+</Diptych>
+
+<Wide src={bathroom1} />
+<Wide src={bathroom2} />

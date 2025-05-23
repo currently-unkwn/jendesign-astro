@@ -30,8 +30,10 @@
 */
 @import "@styles/04-utilities/align-items.css";
 @import "@styles/04-utilities/breakpoints.css";
+@import "@styles/04-utilities/background-color.css";
 @import "@styles/04-utilities/gap.css";
 @import "@styles/04-utilities/column-gap.css";
+@import "@styles/04-utilities/display.css";
 @import "@styles/04-utilities/grid.css";
 @import "@styles/04-utilities/height.css";
 @import "@styles/04-utilities/justify-content.css";
@@ -43,3 +45,4 @@
 @import "@styles/04-utilities/slide-and-reveal.css";
 @import "@styles/04-utilities/fonts.css";
 @import "@styles/04-utilities/colors.css";
+@import "@styles/04-utilities/underline-styles.css";

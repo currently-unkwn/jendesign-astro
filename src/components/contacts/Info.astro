@@ -1,0 +1,38 @@
+---
+// Tools
+// Compositions
+// Components
+import Stack from "../compositions/Stack.astro";
+import Heading from "../ui/Heading.astro";
+// Data
+import { ABOUT_DATA, CONTACTS_DATA } from "@/data/siteData";
+import Text from "../ui/Text.astro";
+import ContactDetail from "./ContactDetail.astro";
+
+const { fullName, city, country } = ABOUT_DATA;
+---
+
+<div class="contacts-info col-12 tablet:col-6">
+  <Stack space="space-6">
+    <Stack space="space-9">
+      <Heading tagName="h1" size="h6">Contact</Heading>
+
+      <Stack space="space-0">
+        <Text tagName="p" size="medium">{fullName}</Text>
+        <Text tagName="p" size="medium">{`${city}, ${country}`}</Text>
+      </Stack>
+    </Stack>
+
+    <Stack space="space-0">
+      {CONTACTS_DATA.map((contact) => <ContactDetail contact={contact} />)}
+    </Stack>
+  </Stack>
+</div>
+
+<style>
+  .contacts-info h1 {
+    font-weight: var(--font-regular);
+    font-size: var(--text-1);
+    letter-spacing: 0.1px;
+  }
+</style>

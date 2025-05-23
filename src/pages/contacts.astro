@@ -1,9 +1,21 @@
 ---
-import { BASE_DATA } from "@/data/siteData";
+// Layouts
 import BaseLayout from "@/layouts/BaseLayout.astro";
-console.log(BASE_DATA);
+
+// Compositions
+
+// Components
+import Hero from "@/components/contacts/Hero.astro";
+import ContactsSection from "@/components/contacts/ContactsSection.astro";
+import DynamicBgSection from "@/components/DynamicBgSection.astro";
+
+// Data
+import { BASE_DATA } from "@/data/siteData";
 ---
 
-<BaseLayout seo={{ title: `Контакти | ${BASE_DATA.title}` }}>
-  <h1>Contacts</h1>
+<BaseLayout seo={{ title: `Contacts | ${BASE_DATA.title}` }}>
+  <DynamicBgSection bgColor="tertiary">
+    <Hero />
+    <ContactsSection />
+  </DynamicBgSection>
 </BaseLayout>

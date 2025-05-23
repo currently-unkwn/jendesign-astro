@@ -1,0 +1,51 @@
+---
+import MyPicture from "../ui/MyPicture.astro";
+
+import featureImg from "../../assets/contacts-feature-image.jpg";
+import DynamicBgSection from "../DynamicBgSection.astro";
+import Frame from "../compositions/Frame.astro";
+---
+
+<section class="hero">
+  <div class="wrapper">
+    <MyPicture src={featureImg} alt="" class="hero-img" />
+  </div>
+</section>
+
+<style>
+  @import "@styles/04-utilities/breakpoints.css";
+
+  .hero {
+    padding-block-start: var(--header-height);
+  }
+
+  .wrapper {
+    /* 236px */
+    --_height: 14.75rem;
+
+    height: var(--_height);
+
+    @media (--tablet-s-and-up) {
+      /* 400px */
+      --_height: 25rem;
+    }
+
+    @media (--laptop-and-up) {
+      /* 500px */
+      --_height: 31.25rem;
+    }
+
+    @media (--desktop-and-up) {
+      /* 600px */
+      --_height: 37.5rem;
+    }
+  }
+
+  .wrapper :global(picture),
+  .wrapper :global(img) {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    object-position: 50% 75%;
+  }
+</style>

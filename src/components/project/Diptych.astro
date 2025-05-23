@@ -1,0 +1,19 @@
+---
+import Row from "../compositions/Row.astro";
+import ImageGrid from "./ImageGrid.astro";
+---
+
+<ImageGrid>
+  <Row
+    rowGap={{ default: "space-10", smallTablet: "space-0" }}
+    class="diptych col-start-1 tablet-s:col-start-2 col-12 tablet-s:col-10"
+  >
+    <slot />
+  </Row>
+</ImageGrid>
+
+<style>
+  .diptych {
+    column-gap: var(--gutter);
+  }
+</style>

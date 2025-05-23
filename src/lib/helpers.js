@@ -50,15 +50,6 @@ export function getBreakpoints(prefix, prop) {
 }
 
 /**
- * Replace symbols to double and single quotes
- * @param {String} title
- * @returns Parsed title
- */
-export function parseTitle(title) {
-  return title.replaceAll("&quot;", `"`).replaceAll("&#39;", `'`);
-}
-
-/**
  * Returns aspect ratio based on orientation
  * @param {String} orientation
  * @returns {String} Aspect ratio
@@ -88,7 +79,7 @@ export function getRatio(orientation) {
  */
 export function getSortedProjects(projects) {
   return [...projects].sort(
-    (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+    (a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf()
   );
 }
 
@@ -100,50 +91,6 @@ export function getSortedProjects(projects) {
  */
 export function getProjectIndex(projects, project) {
   return projects.findIndex((p) => p.id === project.id);
-}
-
-/**
- * Get project time period
- * @param {Object} period
- * @returns {String} Time period
- */
-export function getTimePeriod(period) {
-  const { startYear, startMonth, endYear, endMonth } = period;
-
-  const isSameYear = startYear === endYear ? "" : startYear;
-  return `${startMonth} ${isSameYear} — ${endMonth} ${endYear} р.`;
-}
-
-/**
- * Generate liqpay signature hash
- * @param {String} data
- * @param {String} privateKey
- * @returns {String} hash
- */
-export function generateLiqPaySignature(data, privateKey) {
-  return cryptoJs.enc.Base64.stringify(
-    cryptoJs.SHA1(privateKey + data + privateKey)
-  );
-}
-
-/**
- * Encode string to base64
- * @param {String} string
- * @returns {String}
- */
-export function encodeBase64(string) {
-  return cryptoJs.enc.Base64.stringify(cryptoJs.enc.Utf8.parse(string));
-}
-
-/**
- * Decode string from base64
- * @param {String} string
- * @returns {String}
- */
-export function decodeBase64(string) {
-  return decodeURIComponent(
-    cryptoJs.enc.Utf8.stringify(cryptoJs.enc.Base64.parse(string))
-  );
 }
 
 /**

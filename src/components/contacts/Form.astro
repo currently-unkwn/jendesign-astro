@@ -1,0 +1,104 @@
+---
+// Tools
+// Compositions
+// Components
+import Stack from "../compositions/Stack.astro";
+import Button from "../ui/Button.astro";
+import FormElement from "./FormElement.astro";
+
+// Data
+import { INPUT_DATA } from "@/data/siteData";
+---
+
+<!-- TODO: Add character counter, validation and success message -->
+<div class="contact-form col-12 tablet:col-6">
+  <form data-form="contact">
+    <Stack space="space-9">
+      <Stack space="space-8">
+        {INPUT_DATA.map((input) => <FormElement input={input} />)}
+      </Stack>
+      <Button class="underline thickness-1 uppercase" type="submit"
+        >Submit</Button
+      >
+    </Stack>
+  </form>
+</div>
+
+<style>
+  .contact-form button {
+    align-self: flex-start;
+    font-size: var(--text-minus-2);
+    letter-spacing: 0.5px;
+  }
+</style>
+
+<script>
+  // Define TypeScript interfaces for form data
+  type FormValues = {
+    name: string;
+    email: string;
+    message: string;
+  };
+
+  const form = document.querySelector(
+    '[data-form="contact"]'
+  ) as HTMLFormElement;
+  const submitButton = form?.querySelector(
+    "button[type='submit']"
+  ) as HTMLButtonElement;
+
+  function resetForm() {
+    form.reset();
+    form.removeAttribute("data-submitting");
+    submitButton.innerText = "Submit";
+  }
+
+  // TODO: Make nice validation and success message
+  async function handleSubmit(event: SubmitEvent) {
+    event.preventDefault();
+
+    // If form is submitted, ignore
+    // if (form.hasAttribute("data-submitting")) return;
+
+    // Get data
+    const data = new FormData(form);
+    const dataObject = Object.fromEntries(data) as FormValues;
+
+    try {
+      form.setAttribute("data-submitting", "true");
+      submitButton.innerText = "Submitting...";
+
+      const request = await fetch("/api/send-email", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(dataObject),
+      });
+
+      if (!request.ok) {
+        throw new Error("Something went wrong with the request");
+      }
+
+      const response = await request.json();
+
+      submitButton.innerText = "Submit Sucess";
+
+      setTimeout(() => {
+        resetForm();
+      }, 3000);
+
+      // console.log(response);
+    } catch (error) {
+      console.log(error);
+
+      submitButton.innerText = "Submit Error";
+
+      setTimeout(() => {
+        resetForm();
+      }, 3000);
+    }
+  }
+
+  form?.addEventListener("submit", handleSubmit);
+</script>

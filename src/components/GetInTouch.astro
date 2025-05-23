@@ -1,9 +1,16 @@
 ---
+import Cluster from "./compositions/Cluster.astro";
+import Button from "./ui/Button.astro";
 import Heading from "./ui/Heading.astro";
+import Link from "./ui/Link.astro";
 ---
 
 <div class="get-in-touch">
-  <Heading tagName="h2" size="h3" class="text"> Questions? Say hi </Heading>
+  <div class="wrapper">
+    <h2 class="text">Got Questions?</h2>
+    <Link href="/contacts" class="link-more underline thickness-2">Say Hi.</Link
+    >
+  </div>
 </div>
 
 <style>
@@ -21,8 +28,21 @@ import Heading from "./ui/Heading.astro";
     }
   }
 
-  .get-in-touch :global(.text) {
-    font-weight: var(--font-regular);
+  .wrapper {
+    @media (--tablet-s-and-up) {
+      display: flex;
+      gap: var(--space-4-fixed);
+    }
+  }
+
+  .wrapper :global(.text),
+  .wrapper :global(.link-more) {
+    /* 28 - 64, 320 - 1380 */
+    font-size: clamp(1.75rem, 3.396vw + 1.071rem, 4rem);
     line-height: 1.1;
+  }
+
+  .wrapper :global(.text) {
+    font-weight: var(--font-regular);
   }
 </style>

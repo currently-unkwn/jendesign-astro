@@ -1,0 +1,70 @@
+---
+// Tools
+import type { CollectionEntry } from "astro:content";
+
+// Compositions
+
+// Components
+import Grid from "../ui/Grid.astro";
+import MyPicture from "../ui/MyPicture.astro";
+import Text from "../ui/Text.astro";
+import Frame from "../compositions/Frame.astro";
+import Stack from "../compositions/Stack.astro";
+
+// Types
+interface Props {
+  planImg: CollectionEntry<"projects">["data"]["projectPlanImg"];
+}
+
+// Props
+const { planImg } = Astro.props;
+---
+
+<section class="project-plan">
+  <Grid>
+    <figure class="wrapper">
+      <Stack space="space-7">
+        <Frame ratio="16:9">
+          <MyPicture
+            src={planImg.src}
+            alt={planImg.alt}
+            width={1100}
+            class="project-plan-img"
+          />
+        </Frame>
+
+        <Text tagName="figcaption" size="small" class="caption color-gray"
+          >{planImg?.caption}</Text
+        >
+      </Stack>
+    </figure>
+  </Grid>
+</section>
+
+<style>
+  @import "@styles/04-utilities/breakpoints.css";
+
+  .wrapper {
+    --_padding-top: var(--space-12-fixed);
+    grid-column: full-start / full-end;
+
+    padding-block-start: var(--_padding-top);
+
+    text-align: center;
+
+    @media (--tablet-and-up) {
+      --_padding-top: var(--space-17-fixed);
+
+      grid-column: 3 / 10;
+    }
+
+    @media (--desktop-and-up) {
+      grid-column: 4 / 9;
+    }
+  }
+
+  .wrapper :global(img) {
+    /* Blend with background color */
+    mix-blend-mode: multiply;
+  }
+</style>

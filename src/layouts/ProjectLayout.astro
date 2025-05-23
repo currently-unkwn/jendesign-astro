@@ -1,0 +1,35 @@
+---
+import Center from "@/components/compositions/Center.astro";
+---
+
+<section class="content">
+  <Center maxWidth="87.5rem" space="space-0">
+    <slot />
+  </Center>
+</section>
+
+<style>
+  @import "@styles/04-utilities/breakpoints.css";
+
+  .content {
+    --_padding-top: var(--space-12-fixed);
+
+    padding-block-start: var(--_padding-top);
+
+    padding-inline: var(--gutter);
+
+    @media (--tablet-and-up) {
+      --_padding-top: var(--space-17-fixed);
+    }
+  }
+
+  .content :global(.image-grid) + :global(.image-grid) {
+    --_space: var(--space-10-fixed);
+
+    margin-block-start: var(--_space);
+
+    @media (--tablet-s-and-up) {
+      --_space: var(--space-12-fixed);
+    }
+  }
+</style>

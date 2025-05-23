@@ -67,62 +67,6 @@
 
 /* STYLES */
 
-.button[data-style="primary"] {
-  --_text-color: var(--color-secondary);
-  --_background-color: var(--color-primary);
-
-  &:hover {
-    --_text-color: var(--color-primary);
-    --_background-color: transparent;
-    border-color: var(--_text-color);
-  }
-}
-
-.button[data-style="primary"].inverted {
-  --_background-color: transparent;
-  --_text-color: var(--color-primary);
-  border-color: var(--_text-color);
-
-  &:hover {
-    --_text-color: var(--color-secondary);
-    --_background-color: var(--color-primary);
-    border-color: var(--_background-color);
-  }
-}
-
-.button[data-style="secondary"] {
-  --_text-color: var(--color-primary);
-  --_background-color: var(--color-secondary);
-
-  &:hover {
-    --_text-color: var(--color-secondary);
-    --_background-color: transparent;
-    border-color: var(--_text-color);
-  }
-}
-
-.button[data-style="accent"] {
-  --_text-color: var(--color-secondary);
-  --_background-color: var(--color-accent);
-
-  &:hover {
-    --_text-color: var(--color-secondary);
-    --_background-color: transparent;
-    border-color: var(--color-accent);
-  }
-}
-
-.button[data-style="accent"][data-variant="chip"] {
-  --_text-color: var(--color-secondary);
-  --_background-color: var(--color-accent);
-  opacity: 1;
-  transition: opacity var(--transition-default);
-
-  &:hover {
-    opacity: 0.5;
-  }
-}
-
 /* SIZES */
 
 .button[data-size="x-small"] {

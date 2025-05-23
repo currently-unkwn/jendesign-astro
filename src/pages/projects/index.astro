@@ -7,11 +7,12 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 // Compositions
 
 // Components
+import ProjectsSection from "@/components/projects/ProjectsSection.astro";
 
 // Data
 import { BASE_DATA } from "@/data/siteData";
 ---
 
-<BaseLayout seo={{ title: `Проєкти | ${BASE_DATA.title}` }}>
-  <h1>Projects</h1>
+<BaseLayout seo={{ title: `Projects | ${BASE_DATA.title}` }}>
+  <ProjectsSection />
 </BaseLayout>

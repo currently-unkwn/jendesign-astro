@@ -8,48 +8,72 @@ import Copyright from "./Copyright.astro";
 // Data
 import { CONTACTS_DATA } from "@/data/siteData";
 import Stack from "./compositions/Stack.astro";
+import Link from "./ui/Link.astro";
+import DynamicBgSection from "./DynamicBgSection.astro";
 
 const [email, phone, instagram, telegram] = CONTACTS_DATA;
 ---
 
-<footer class="footer">
-  <div class="filler"></div>
+<footer id="contacts" class="footer">
+  <DynamicBgSection bgColor="tertiary">
+    <div class="wrapper">
+      <div class="filler"></div>
 
-  <GetInTouch />
+      <GetInTouch />
 
-  <div class="info">
-    <div class="filler">
-      <Copyright />
+      <div class="info">
+        <div class="filler">
+          <Copyright />
+        </div>
+
+        <div class="contacts">
+          <Stack space="space-0">
+            <Link href={phone.link} color="text" hoverColor="text-darker"
+              >{phone.value}</Link
+            >
+            <Link href={email.link} color="text" hoverColor="text-darker"
+              >{email.value}</Link
+            >
+          </Stack>
+        </div>
+
+        <div class="social">
+          <Stack space="space-0">
+            <Link
+              href={telegram.link}
+              color="text"
+              hoverColor="text-darker"
+              isExternal>{telegram.title}</Link
+            >
+            <Link
+              href={instagram.link}
+              color="text"
+              hoverColor="text-darker"
+              isExternal>{instagram.title}</Link
+            >
+          </Stack>
+        </div>
+      </div>
     </div>
-
-    <div class="contacts">
-      <Stack space="space-0">
-        <a href={phone.link}>{phone.value}</a>
-        <a href={email.link}>{email.value}</a>
-      </Stack>
-    </div>
-
-    <div class="social">
-      <Stack space="space-0">
-        <a href={telegram.link}>{telegram.title}</a>
-        <a href={instagram.link}>{instagram.title}</a>
-      </Stack>
-    </div>
-  </div>
+  </DynamicBgSection>
 </footer>
 
 <style>
   @import "@styles/04-utilities/breakpoints.css";
 
   .footer {
+  }
+
+  .wrapper {
     --_height: 55vh;
 
     display: flex;
     flex-direction: column;
+
     height: var(--_height);
 
     /* TEMP */
-    background-color: var(--color-tertiary);
+    /* background-color: var(--color-tertiary); */
 
     @media (--tablet-and-up) {
       --_height: 70vh;

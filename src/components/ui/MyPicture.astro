@@ -7,8 +7,9 @@ type Props = {
   alt: string;
   width?: number;
   class?: string;
+  [key: string]: any;
 };
-const { src, alt, width, class: classList } = Astro.props;
+const { src, alt, width, class: classList, ...rest } = Astro.props;
 ---
 
 <Picture
@@ -18,4 +19,5 @@ const { src, alt, width, class: classList } = Astro.props;
   width={width}
   formats={["avif", "webp"]}
   densities={[1.5, 2]}
+  {...rest}
 />

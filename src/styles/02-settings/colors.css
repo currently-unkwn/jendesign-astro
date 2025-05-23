@@ -16,6 +16,7 @@
 
   /* Neutral colors */
   --color-black: hsl(200, 11%, 5%);
+  --color-black-lighter: hsl(0 2% 11%);
   --color-white: hsl(255 100% 100%);
 
   --color-dark-gray: hsl(0 2% 11%);

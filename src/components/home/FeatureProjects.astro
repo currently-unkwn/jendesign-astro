@@ -1,0 +1,40 @@
+---
+// Tools
+import { getCollection } from "astro:content";
+
+import { getSortedProjects } from "@/lib/helpers";
+
+// Components
+import FeatureProjectItem from "./FeatureProjectItem.astro";
+import DynamicBgSection from "../DynamicBgSection.astro";
+import Separator from "../ui/Separator.astro";
+
+// Data
+
+const projects = await getCollection("projects", ({ data }) => !data.isDraft);
+
+
+const sortedProjects = getSortedProjects(projects);
+---
+
+<section class="feature-projects">
+  <DynamicBgSection bgColor="secondary">
+    {
+      sortedProjects.map((project) => (
+        <FeatureProjectItem
+          slug={project.id}
+          title={project.data.title}
+          images={project.data.featureProjectImages}
+        />
+        <Separator/>
+      ))
+    }
+  </DynamicBgSection>
+</section>
+
+<style>
+  .feature-projects {
+    /* TEMP */
+    /* background-color: var(--color-secondary); */
+  }
+</style>

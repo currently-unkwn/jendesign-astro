@@ -1,5 +1,6 @@
 ---
 import { getBreakpoints } from "@/lib/helpers";
+import { string } from "astro:schema";
 
 type columnGapOptions =
   | "space-0"
@@ -47,6 +48,7 @@ type rowGapOptions =
 
 interface breakpointsObject {
   default?: string;
+  smallTablet?: string;
   tablet?: string;
   laptop?: string;
   desktop?: string;

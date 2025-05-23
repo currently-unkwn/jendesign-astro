@@ -1,0 +1,58 @@
+---
+// Tools
+import { getCollection } from "astro:content";
+
+// Helpers
+import { getSortedProjects } from "@/lib/helpers";
+
+// Compositions
+import Center from "@compositions/Center.astro";
+
+// Components
+import DynamicBgSection from "@/components/DynamicBgSection.astro";
+import Project from "@/components/projects/Project.astro";
+import Separator from "../ui/Separator.astro";
+
+// Data
+const projects = await getCollection("projects", ({ data }) => !data.isDraft);
+
+const sortedProjects = getSortedProjects(projects);
+---
+
+<section class="projects">
+  <DynamicBgSection bgColor="secondary">
+    <div class="wrapper">
+      {
+        sortedProjects.map((project) => (
+          <Project
+            slug={project.id}
+            title={project.data.title}
+            images={project.data.featureProjectImages}
+          />
+        ))
+      }
+    </div>
+  </DynamicBgSection>
+</section>
+
+<style>
+  @import "@styles/04-utilities/breakpoints.css";
+
+  .projects {
+    padding-block-start: var(--header-height);
+  }
+
+  .wrapper {
+    padding-block-start: var(--space-10-fixed);
+  }
+
+  .wrapper :global(.project) + :global(.project) {
+    --_space: var(--space-12-fixed);
+
+    padding-block-start: var(--_space);
+
+    @media (--tablet-and-up) {
+      --_space: var(--space-16-fixed);
+    }
+  }
+</style>

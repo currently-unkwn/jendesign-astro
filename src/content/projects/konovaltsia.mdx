@@ -1,16 +1,115 @@
 ---
-title: Konovaltsya
-city: Kyiv, Pecherskyi district
-square: 154м²
-realizationYear: 2021
+title: Konovaltsia
+info:
+  city: Kyiv, Pecherskyi district
+  square: 154м²
+  realizationYear: 2021
+  img:
+    src: ./images/konovaltsia/konovaltsia_info-image.jpg
+    alt: "Image"
 cover:
   image: ./images/konovaltsia/konovaltsia_cover.jpg
   alt: "Image"
-infoImg:
-  image: ./images/konovaltsia/konovaltsia_info-image.jpg
+featureProjectImages:
+  - src: ./images/konovaltsia/feature-project/konovaltsia_feature_project_001.jpg
+    alt: "Feature Image"
+    aspectRatio: "3:2"
+    colSpan: "6"
+    display: "block"
+  - src: ./images/konovaltsia/feature-project/konovaltsia_feature_project_002.jpg
+    alt: "Feature Image"
+    aspectRatio: "3:4"
+    colSpan: "3"
+    display: "block"
+  - src: ./images/konovaltsia/feature-project/konovaltsia_feature_project_003.jpg
+    alt: "Feature Image"
+    aspectRatio: "3:2"
+    colSpan: "3"
+    display: "none"
+  - src: ./images/konovaltsia/feature-project/konovaltsia_feature_project_004.jpg
+    alt: "Feature Image"
+    aspectRatio: "3:4"
+    colSpan: "3"
+    display: "block"
+projectNavImg:
+  image: ./images/konovaltsia/konovaltsia_project-nav-image.jpg
   alt: "Image"
-planScheme:
-  image: ./images/konovaltsia/konovaltsia_plan-scheme.jpg
-  alt: "Image"
-pubDate: 2024-12-01
+  aspectRatio: "3:2"
+pubDate: 2025-12-03
 ---
+
+{/* Assets */}
+import livingRoom1 from "./images/konovaltsia/project-images/konovaltsia_project_003.jpg";
+import livingRoom2 from "./images/konovaltsia/project-images/konovaltsia_project_005.jpg";
+import livingRoom3 from "./images/konovaltsia/project-images/konovaltsia_project_006.jpg";
+import livingRoom4 from "./images/konovaltsia/project-images/konovaltsia_project_007.jpg";
+import corridor1 from "./images/konovaltsia/project-images/konovaltsia_project_018.jpg";
+import corridor2 from "./images/konovaltsia/project-images/konovaltsia_project_015.jpg";
+import corridor3 from "./images/konovaltsia/project-images/konovaltsia_project_019.jpg";
+import corridor4 from "./images/konovaltsia/project-images/konovaltsia_project_016.jpg";
+import mainBedroom1 from "./images/konovaltsia/project-images/konovaltsia_project_025.jpg";
+import mainBedroom2 from "./images/konovaltsia/project-images/konovaltsia_project_026.jpg";
+import mainBedroom3 from "./images/konovaltsia/project-images/konovaltsia_project_028.jpg";
+import workPlace from "./images/konovaltsia/project-images/konovaltsia_project_013.jpg";
+import mainBedroom4 from "./images/konovaltsia/project-images/konovaltsia_project_014.jpg";
+import mainBathroom1 from "./images/konovaltsia/project-images/konovaltsia_project_008.jpg";
+import mainBathroom2 from "./images/konovaltsia/project-images/konovaltsia_project_009.jpg";
+import secondBedroom1 from "./images/konovaltsia/project-images/konovaltsia_project_010.jpg";
+import secondBathroom1 from "./images/konovaltsia/project-images/konovaltsia_project_024.jpg";
+import kidsBedroom1 from "./images/konovaltsia/project-images/konovaltsia_project_011.jpg";
+import kidsBedroom2 from "./images/konovaltsia/project-images/konovaltsia_project_012.jpg";
+import kitchen1 from "./images/konovaltsia/project-images/konovaltsia_project_020.jpg";
+import kitchen2 from "./images/konovaltsia/project-images/konovaltsia_project_021.jpg";
+import thirdBathroom1 from "./images/konovaltsia/project-images/konovaltsia_project_022.jpg";
+import thirdBathroom2 from "./images/konovaltsia/project-images/konovaltsia_project_023.jpg";
+
+{/* Layout */}
+
+<Wide src={livingRoom1} />
+<Wide src={livingRoom2} />
+
+<Diptych>
+  <Half src={livingRoom3} orientation="landscape" />
+  <Half src={livingRoom4} orientation="landscape" />
+</Diptych>
+
+<Narrow src={corridor1} />
+
+<Diptych>
+  <Half src={corridor2} />
+  <Half src={corridor3} />
+</Diptych>
+
+<Narrow src={corridor4} />
+
+<Full src={mainBedroom1} />
+
+<Diptych>
+  <Half src={mainBedroom2} orientation="landscape" />
+  <Half src={mainBedroom3} orientation="landscape" />
+</Diptych>
+
+<Wide src={workPlace} />
+<Wide src={mainBedroom4} />
+
+<Diptych>
+  <Half src={mainBathroom1} />
+  <Half src={mainBathroom2} />
+</Diptych>
+
+<Wide src={secondBedroom1} />
+
+<Narrow src={secondBathroom1} />
+
+<Diptych>
+  <Half src={kidsBedroom1} orientation="landscape" />
+  <Half src={kidsBedroom2} orientation="landscape" />
+</Diptych>
+
+<Narrow src={kitchen1} />
+<Narrow src={kitchen2} />
+
+<Diptych>
+  <Half src={thirdBathroom1} />
+  <Half src={thirdBathroom2} />
+</Diptych>
