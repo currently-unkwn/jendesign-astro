@@ -19,8 +19,8 @@ document.addEventListener("astro:page-load", () => {
    */
   initDialog();
 
-  // const rootElement = document.documentElement;
-  // rootElement.classList.add("no-bg-transition");
+  const rootElement = document.documentElement;
+  rootElement.classList.add("no-bg-transition");
 
   // Get all sections with data-color attribute
   const sections = document.querySelectorAll("[data-color]");
@@ -53,7 +53,7 @@ document.addEventListener("astro:page-load", () => {
   setDynamicBg(sections);
 
   // Re-enable transitions after a short delay
-  // setTimeout(() => {
-  //   rootElement.classList.remove("no-bg-transition");
-  // }, 100);
+  setTimeout(() => {
+    rootElement.classList.remove("no-bg-transition");
+  }, 100);
 });
