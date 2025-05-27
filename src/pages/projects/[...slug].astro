@@ -12,7 +12,7 @@ import ProjectLayout from "@/layouts/ProjectLayout.astro";
 // Components
 import Hero from "@/components/project/Hero.astro";
 import Info from "@/components/project/Info.astro";
-import ProjectPlan from "@/components/project/ProjectPlan.astro";
+// import ProjectPlan from "@/components/project/ProjectPlan.astro";
 import ProjectNavigation from "@/components/project/ProjectNavigation.astro";
 import { components } from "@/components/mdxComponents.js";
 
@@ -59,7 +59,7 @@ const { title, cover, info, projectPlanImg } = project.data;
 <BaseLayout seo={{ title: `${title} | ${BASE_DATA.title}` }}>
   <Hero cover={cover} id={project.id} />
   <Info title={title} info={info} id={project.id} />
-  {projectPlanImg && <ProjectPlan planImg={projectPlanImg} />}
+  <!-- {projectPlanImg && <ProjectPlan planImg={projectPlanImg} />} -->
   <ProjectLayout>
     <DynamicBgSection bgColor="gray-light-02" class="content">
       <Content components={{ ...components }} />
