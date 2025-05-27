@@ -19,9 +19,9 @@ const { cover, id } = Astro.props;
 
 <section class="project-hero">
   <DynamicBgSection bgColor="white" style="height: 100%;">
+    <!-- w: 1680, double: 3360 -->
     <MyPicture
       src={cover.image}
-      width={1680}
       alt={cover.alt}
       class="project-hero-img"
       transition:name={`/projects/${id}-image`}

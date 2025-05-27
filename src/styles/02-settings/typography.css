@@ -11,20 +11,12 @@
 
   /* Base font stacks */
 
-  --font-sans-serif: "Roboto", -apple-system, BlinkMacSystemFont, avenir next,
-    avenir, segoe ui, helvetica neue, helvetica, Ubuntu, roboto, noto, arial,
-    sans-serif;
+  --font-sans-serif: system-ui, BlinkMacSystemFont, avenir next, avenir,
+    segoe ui, helvetica neue, helvetica, Ubuntu, roboto, noto, arial, sans-serif;
 
   --font-serif: "Butler-Free Regular", Iowan Old Style, Apple Garamond,
     Baskerville, Times New Roman, Droid Serif, Times, Source Serif Pro, serif,
     Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, serif;
-
-  --font-text: "Adjusted Arial Fallback", -apple-system, BlinkMacSystemFont,
-    avenir next, avenir, segoe ui, helvetica neue, helvetica, Ubuntu, roboto,
-    noto, arial, sans-serif;
-
-  --font-heading: "Ermilov Bold", "Adjusted Arial Black Fallback", Avenir,
-    Montserrat, Corbel, "URW Gothic", source-sans-pro, sans-serif;
 
   /*
   * Major second: 1.125

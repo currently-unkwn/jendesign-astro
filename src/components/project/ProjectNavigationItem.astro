@@ -24,8 +24,8 @@ const projectDirection =
   <Link href={`/projects/${project.id}`}>
     <Stack space="space-6">
       <Frame ratio={projectNavImg.aspectRatio} class="project-nav-img">
+        <!-- w: 700, double: 1400 -->
         <MyPicture
-          width={700}
           src={projectNavImg.image}
           alt={projectNavImg.alt}
           transition:name={`/projects/${project.id}-image`}

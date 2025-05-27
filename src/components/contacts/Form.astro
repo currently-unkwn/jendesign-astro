@@ -17,8 +17,7 @@ import { INPUT_DATA } from "@/data/siteData";
       <Stack space="space-8">
         {INPUT_DATA.map((input) => <FormElement input={input} />)}
       </Stack>
-      <Button class="underline thickness-1 uppercase" type="submit"
-        >Submit</Button
+      <Button class="underline thickness-1 uppercase" type="submit">Send</Button
       >
     </Stack>
   </form>
@@ -48,10 +47,14 @@ import { INPUT_DATA } from "@/data/siteData";
       "button[type='submit']"
     ) as HTMLButtonElement;
 
+    function statusForm(status: string) {
+      return (submitButton.innerText = status);
+    }
+
     function resetForm() {
       form.reset();
       form.removeAttribute("data-submitting");
-      submitButton.innerText = "Submit";
+      statusForm("Send");
     }
 
     // TODO: Make nice validation and success message
@@ -67,7 +70,7 @@ import { INPUT_DATA } from "@/data/siteData";
 
       try {
         form.setAttribute("data-submitting", "true");
-        submitButton.innerText = "Submitting...";
+        statusForm("Sending...");
 
         const request = await fetch("/api/send-email", {
           method: "POST",
@@ -83,7 +86,7 @@ import { INPUT_DATA } from "@/data/siteData";
 
         const response = await request.json();
 
-        submitButton.innerText = "Submit Sucess";
+        statusForm("Sent!");
 
         setTimeout(() => {
           resetForm();
@@ -93,7 +96,7 @@ import { INPUT_DATA } from "@/data/siteData";
       } catch (error) {
         console.log(error);
 
-        submitButton.innerText = "Submit Error";
+        statusForm("Failed. Try again!");
 
         setTimeout(() => {
           resetForm();
