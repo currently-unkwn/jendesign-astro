@@ -10,6 +10,6 @@ import netlify from "@astrojs/netlify";
 // https://astro.build/config
 export default defineConfig({
   integrations: [icon(), sitemap(), mdx()],
-  output: "static",
+  output: "server",
   adapter: netlify(),
 });
