@@ -9,6 +9,7 @@ import netlify from "@astrojs/netlify";
 
 // https://astro.build/config
 export default defineConfig({
+  site: "https://jendesign-astro.netlify.app",
   integrations: [icon(), sitemap(), mdx()],
   output: "server",
   adapter: netlify(),
