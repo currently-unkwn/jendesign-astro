@@ -2,9 +2,21 @@
 // Tools
 import { SEO, type Props as SEOProps } from "astro-seo";
 import { ClientRouter } from "astro:transitions";
+import { getImage } from "astro:assets";
 
 // Data
 import { BASE_DATA } from "@/data/siteData";
+
+// Assets
+import faviconPngSrc from "../assets/favicon.png";
+
+// Favicons
+const appleTouchIcon = await getImage({
+  src: faviconPngSrc,
+  width: 180,
+  height: 180,
+  format: "png",
+});
 
 // Types
 interface Props {
@@ -13,11 +25,13 @@ interface Props {
 
 // Props
 const { seo } = Astro.props;
+console.log(appleTouchIcon.src);
 ---
 
 <head>
   <meta charset="utf-8" />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="apple-touch-icon" href={appleTouchIcon.src} />
   <meta name="viewport" content="width=device-width" />
   <meta name="generator" content={Astro.generator} />
   <SEO
