@@ -59,7 +59,18 @@ const { title, cover, info, projectPlanImg } = project.data;
 // console.log(projects);
 ---
 
-<BaseLayout seo={{ title: `${title} | ${BASE_DATA.title}` }}>
+<BaseLayout
+  seo={{ title: `${title} | ${BASE_DATA.title}` }}
+  ogImage={{
+    template: "projectCover",
+    data: {
+      title: `${title} | ${BASE_DATA.title}`,
+      image: `${Astro.url.origin}/${cover.image.src}`,
+      alt: cover.alt,
+    },
+  }}
+  type="article"
+>
   <Hero cover={cover} id={project.id} />
   <Info title={title} info={info} id={project.id} />
   <!-- {projectPlanImg && <ProjectPlan planImg={projectPlanImg} />} -->

@@ -21,11 +21,19 @@ const appleTouchIcon = await getImage({
 // Types
 interface Props {
   seo?: SEOProps;
+  ogImage?: {
+    template: string;
+    data?: Record<string, any>;
+    alt?: string;
+  };
+  type?: string;
 }
 
 // Props
-const { seo } = Astro.props;
-console.log(appleTouchIcon.src);
+const { seo, ogImage, type } = Astro.props;
+
+// new URLSearchParams(ogImage?.data) — carry data to client-side from server-side
+const ogImageUrl = `${Astro.url.origin}/og/${ogImage?.template ?? "default"}.png?${new URLSearchParams(ogImage?.data)}`;
 ---
 
 <head>
@@ -38,6 +46,43 @@ console.log(appleTouchIcon.src);
     title={seo?.title ?? BASE_DATA.title}
     description={seo?.description ?? BASE_DATA.description}
     {...seo}
+    openGraph={{
+      basic: {
+        type: type ?? "website",
+        title: seo?.title ?? BASE_DATA.title,
+
+        image: ogImageUrl,
+        url: seo?.canonical,
+      },
+      image: {
+        alt: ogImage?.data?.alt,
+        type: "image/png",
+      },
+    }}
+    extend={{
+      meta: [
+        {
+          name: "og:description",
+          content: seo?.description ?? BASE_DATA.description,
+        },
+        {
+          name: "og:locale",
+          content: "en_US",
+        },
+        {
+          name: "og:site_name",
+          content: BASE_DATA.title,
+        },
+      ],
+    }}
+    twitter={{
+      card: "summary_large_image",
+      image: ogImageUrl,
+      imageAlt: ogImage?.alt,
+      site: BASE_DATA.title,
+      title: seo?.title ?? BASE_DATA.title,
+      description: seo?.description ?? BASE_DATA.description,
+    }}
   />
   <!-- Control for View Transitons -->
   <ClientRouter />
