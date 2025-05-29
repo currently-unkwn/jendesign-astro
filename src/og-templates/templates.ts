@@ -18,7 +18,10 @@ export const templates: Record<string, (data?: Record<string, any>) => any> = {
   `,
   projectCover: (data) => html`
     <div style="display: flex; align-items: center; justify-content: center;">
-      <img src="${data?.image}" style="height: 100%;" />
+      <img
+        src="${data?.image}"
+        style="width: 100%; height: 100%; object-fit: cover;"
+      />
     </div>
   `,
 };
