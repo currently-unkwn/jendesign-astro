@@ -18,15 +18,15 @@ type EmailJSRequest = {
   text: string;
 };
 
-const publicKey = import.meta.env.PUBLIC_EMAILJS_API_KEY as string;
-const privateKey = import.meta.env.SECRET_EMAILJS_API_KEY as string;
-const serviceId = import.meta.env.SECRET_EMAILJS_SERVICE_ID as string;
-const templateId = import.meta.env.SECRET_EMAILJS_TEMPLATE_ID as string;
+// const publicKey = import.meta.env.PUBLIC_EMAILJS_API_KEY as string;
+// const privateKey = import.meta.env.SECRET_EMAILJS_API_KEY as string;
+// const serviceId = import.meta.env.SECRET_EMAILJS_SERVICE_ID as string;
+// const templateId = import.meta.env.SECRET_EMAILJS_TEMPLATE_ID as string;
 
-// const publicKey = process.env.PUBLIC_EMAILJS_API_KEY as string;
-// const privateKey = process.env.SECRET_EMAILJS_API_KEY as string;
-// const serviceId = process.env.SECRET_EMAILJS_SERVICE_ID as string;
-// const templateId = process.env.SECRET_EMAILJS_TEMPLATE_ID as string;
+const publicKey = process.env.PUBLIC_EMAILJS_API_KEY as string;
+const privateKey = process.env.SECRET_EMAILJS_API_KEY as string;
+const serviceId = process.env.SECRET_EMAILJS_SERVICE_ID as string;
+const templateId = process.env.SECRET_EMAILJS_TEMPLATE_ID as string;
 
 export const POST: APIRoute = async ({ request }) => {
   try {
