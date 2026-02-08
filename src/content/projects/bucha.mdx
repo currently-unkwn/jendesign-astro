@@ -1,0 +1,65 @@
+---
+title: Bucha
+info:
+  city: Bucha, Kyiv Oblast
+  square: 112м²
+  realizationYear: 2025
+  img:
+    src: ./images/bucha/bucha_info-image.jpg
+    alt: "Image"
+cover:
+  image: ./images/bucha/bucha_cover.jpg
+  alt: "Image"
+featureProjectImages:
+  - src: ./images/bucha/feature-project/bucha_feature_project_001.jpg
+    alt: "Feature Image"
+    aspectRatio: "3:4"
+    colSpan: "3"
+    display: "block"
+  - src: ./images/bucha/feature-project/bucha_feature_project_002.jpg
+    alt: "Feature Image"
+    aspectRatio: "3:2"
+    colSpan: "3"
+    display: "block"
+  - src: ./images/bucha/feature-project/bucha_feature_project_003.jpg
+    alt: "Feature Image"
+    aspectRatio: "3:2"
+    colSpan: "6"
+    display: "none"
+  - src: ./images/bucha/feature-project/bucha_feature_project_004.jpg
+    alt: "Feature Image"
+    aspectRatio: "3:4"
+    colSpan: "6"
+    display: "block"
+projectNavImg:
+  image: ./images/bucha/bucha_project-nav-image.jpg
+  alt: "Image"
+  aspectRatio: "2:3"
+pubDate: 2026-02-07
+---
+
+import main1 from "./images/bucha/project-images/bucha_project_001.jpg";
+import main2 from "./images/bucha/project-images/bucha_project_002.jpg";
+import kitchen1 from "./images/bucha/project-images/bucha_project_003.jpg";
+import kitchen2 from "./images/bucha/project-images/bucha_project_004.jpg";
+import workPlace1 from "./images/bucha/project-images/bucha_project_005.jpg";
+import workPlace2 from "./images/bucha/project-images/bucha_project_006.jpg";
+import bedroom from "./images/bucha/project-images/bucha_project_007.jpg";
+import corridor from "./images/bucha/project-images/bucha_project_008.jpg";
+
+<Wide src={main1} />
+<Wide src={main2} />
+
+<Diptych>
+  <Half src={kitchen1} />
+  <Half src={kitchen2} />
+</Diptych>
+
+<Wide src={workPlace1} />
+
+<Narrow src={workPlace2} />
+
+<Diptych>
+  <Half src={bedroom} />
+  <Half src={corridor} />
+</Diptych>

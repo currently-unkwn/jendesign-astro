@@ -23,6 +23,7 @@ import { components } from "@/components/mdxComponents.js";
 import { BASE_DATA } from "@/data/siteData";
 import DynamicBgSection from "@/components/DynamicBgSection.astro";
 import Separator from "@/components/ui/Separator.astro";
+import { getSortedProjects } from "@/lib/helpers";
 
 export async function getStaticPaths() {
   const projects = await getCollection("projects", ({ data }) => !data.isDraft);
@@ -55,6 +56,7 @@ const { project, projects } = Astro.props;
 const { Content } = await render(project);
 const { title, cover, info, projectPlanImg } = project.data;
 
+const sortedProjects = getSortedProjects(projects);
 // TEMP
 // console.log(projects);
 ---
@@ -79,6 +81,6 @@ const { title, cover, info, projectPlanImg } = project.data;
       <Content components={{ ...components }} />
     </DynamicBgSection>
   </ProjectLayout>
-  <ProjectNavigation projects={projects} currentProject={project} />
+  <ProjectNavigation projects={sortedProjects} currentProject={project} />
   <Separator />
 </BaseLayout>

@@ -25,15 +25,15 @@ export const ABOUT_DATA = {
 export const CONTACT_SOURCES = [
   {
     title: "Email",
-    value: "jendesign@gmail.com",
-    link: "mailto:jendesign@gmail.com",
+    value: "jenya_diz@ukr.net",
+    link: "mailto:jenya_diz@ukr.net",
     icon: "",
     isSocial: false,
   },
   {
     title: "Phone",
-    value: "+38 093 555-44-33",
-    link: "tel:+38 093 555-44-33",
+    value: "+38 096 291-06-47",
+    link: "tel:+38 096 291-06-47",
     icon: "",
     isSocial: false,
   },

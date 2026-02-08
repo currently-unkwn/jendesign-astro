@@ -79,7 +79,7 @@ export function getRatio(orientation) {
  */
 export function getSortedProjects(projects) {
   return [...projects].sort(
-    (a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf()
+    (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
   );
 }
 
